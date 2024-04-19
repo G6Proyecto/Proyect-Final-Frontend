@@ -1,0 +1,15 @@
+.cardProduct{
+    min-width: 200px;
+}
+.imgCard{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    
+}
+.cardBody{
+    height: 100px;
+}
+.cardProduct{
+
+}
