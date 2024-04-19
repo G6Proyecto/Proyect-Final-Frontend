@@ -1,0 +1,145 @@
+:root {
+  --primario: #ab1f2c;
+  --secundario: #d8973c;
+  --terciario: #bd632f;
+  --cuarto: #ec9924;
+  --quinto: #e5e9f3;
+}
+
+.navcolor {
+  background-color: var(--cuarto);
+}
+
+.logo img {
+  height: 2em;
+  width: 5em;
+  background-color: var(--quinto);
+  object-fit: contain;
+  margin: 15px 0 0 15px;
+  border-radius: 15px;
+  border-left: var(--primario) 5px solid;
+  border-bottom: var(--primario) 5px solid;
+  
+}
+
+@media (max-width: 991px) {
+  .sidebar {
+    background-color: #ec99246c;
+  }
+}
+
+.sub-btn {
+  font-size: 15px;
+  font-weight: bold;
+  background: var(--secundario);
+  width: 160px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 15px;
+  border: var(--quinto) 2px solid;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+
+.sub-btn:hover,
+.sub-btn:focus,
+.sub-btn:active {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+@media (min-width: 991px) {
+  .dropdown:hover > .dropdown-menu {
+    display: block;
+    margin-top: 0;
+  }
+}
+
+
+
+.navItem:hover {
+  
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  
+  
+}
+
+.menu-btn:hover {
+  text-decoration: underline;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.imgback {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+}
+
+.cust-icon:hover {
+  color: var(--primario);
+  font-weight: bolder;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.search-container {
+  top: 20px;
+  background-color: var(--quinto);
+  z-index: 999;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  width: 50px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.cust-socials {
+  width: auto;
+  height: 30px;
+  font-size: xx-large;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.facebook:hover {
+  background: #41579a;
+  color: #fff;
+  border-radius: 15px;
+}
+
+.instagram:hover {
+  background: linear-gradient(
+    to top right,
+    #fcde30,
+    #e9712a,
+    #d2313b,
+    #ae4198,
+    #7540a1,
+    #5443a8
+  );
+  color: #fff;
+  border-radius: 15px;
+}
+
+.whatsapp:hover {
+  background: linear-gradient(
+    to top right,
+    rgba(7, 94, 84, 1) 5%,
+    rgba(37, 211, 102, 1) 59%,
+    rgba(255, 255, 255, 1) 110%
+  );
+  color: #fff;
+  border-radius: 15px;
+}
