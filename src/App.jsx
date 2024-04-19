@@ -18,7 +18,7 @@ function App() {
           <Socials/>
           <NavBar />
         </header>
-        <main className='container-fluid'>
+        <main className=''>
         <CarouselFadeExample/>
           <Routes>
             <Route path="/" element={<Home/>} />
