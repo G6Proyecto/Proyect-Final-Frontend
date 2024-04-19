@@ -1,3 +1,4 @@
+import CarouselFadeExample from './Components/Carousel';
 import NavBar from "./Components/Navbar/NavBar";
 import Socials from "./Components/Navbar/Socials";
 import Footer from "./Components/Footer/Footer";
@@ -7,15 +8,18 @@ import Admin from "./Components/Pages/Admin";
 import Error404 from "./Components/Pages/Error404";
 import Contact from "./Components/Pages/Contact";
 
+
 function App() {
   return (
     <>
+
       <BrowserRouter>
         <header className="sticky-top">
           <Socials/>
           <NavBar />
         </header>
-        <main>
+        <main className='container-fluid'>
+        <CarouselFadeExample/>
           <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/contact" element={<Contact/>} />
@@ -27,6 +31,7 @@ function App() {
           <Footer />
         </footer>
       </BrowserRouter>
+
     </>
   );
 }
