@@ -1,21 +1,12 @@
-import BacodeLogo from "../logo/BacodeLogo.svg";
 import { NavLink } from "react-router-dom";
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { Form, InputGroup } from "react-bootstrap";
 import "./NavBar.css";
 
 const NavBar = () => {
   return (
-    <nav className="navcolor navbar-dark navbar navbar-expand-lg text-primary sticky-top">
-      <div className="container">
-        {/* <!-- Logo --> */}
-        <div className="logo">
-          {/* <a className="navbar-brand fs-4" href="Index.html">
-              <img src={BacodeLogo} alt="Bacode" />
-            </a> */}
-          <NavLink to="/" className="navbar-brand fs-2">
-            <img src={BacodeLogo} alt="Bacode" />
-          </NavLink>
-        </div>
+    <nav className="navcolor navbar-dark navbar navbar-expand-lg text-primary ">
+      <div className="container-fluid d-flex justify-content-end">
         {/* <!-- Toggler Btn--> */}
         <button
           className="navbar-toggler shadow-none border-0"
@@ -47,41 +38,78 @@ const NavBar = () => {
             ></button>
           </div>
           {/* <!-- SideBar Body --> */}
-          <div className="sidebar offcanvas-body d-flex flex-column align-items-center flex-lg-row p-4 p-lg-0">
-            <ul className="navbar-nav justify-content-center fs-5 flex-grow-1 pe-3">
-              <li className="nav-item mx-2">
-                
-                <NavLink to="/" className={'nav-link text-dark'}> Inicio </NavLink>
-              </li>
-              <li className="nav-item mx-2">
-              {/* <NavLink to="/error" className={'nav-link text-dark'}> Menú </NavLink> */}
-              <NavDropdown title="Menú" className="border border-2 border-black rounded-2 bg-danger">
-              <NavDropdown.Item href="/error">Burgers</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Ver todo...
-              </NavDropdown.Item>
-            </NavDropdown>
-              </li>
-              <li className="nav-item mx-2">
-              <NavLink to="/contact" className={'nav-link text-dark'}> Contacto </NavLink>
-              </li>
-              <li className="nav-item mx-2">
-              <NavLink to="/error" className={'nav-link text-dark'}> Ayuda </NavLink>
-              </li>
-              <li className="nav-item mx-2">
-              <NavLink to="/admin" className={'nav-link text-dark text-decoration-line-through'}> Administración </NavLink>
-              </li>
-            </ul>
+          <div className="sidebar offcanvas-body d-flex flex-column align-items-center flex-lg-row p-4 p-lg-0 justify-content-around">
+            <div>
+              <ul className="navbar-nav justify-content-center fs-5 flex-grow-1 pe-3">
+                <li className="nav-item mx-2  navItem">
+                  <NavLink to="/" className={"nav-link text-dark"}>
+                    {" "}
+                    Inicio{" "}
+                  </NavLink>
+                </li>
+                <li className="nav-item mx-2 navItem">
+                  <div className="dropdown">
+                    <NavLink to="/" className={'nav-link text-dark dropdown-toggle'} data-bs-toggle="dropdown"> Menú </NavLink>
+                    <ul className="dropdown-menu">
+                      <li>
+                      <NavLink to="/error" className={'ps-2 nav-link text-dark dropdownItem'}> Hamburguesas </NavLink>
+                      </li>
+                      <li>
+                      <NavLink to="/error" className={'ps-2 nav-link text-dark dropdownItem'}> Ensaladas </NavLink>
+                      </li>
+                      <li>
+                      <NavLink to="/error" className={'ps-2 nav-link text-dark dropdownItem'}> Bebidas </NavLink>
+                      </li>
+                      <li>
+                        <NavDropdown.Divider />
+                      </li>
+                      <li>
+                      <NavLink to="/error" className={'menu-btn text-center fw-bolder nav-link text-dark'}> Ver todo </NavLink>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                </li>
+                <li className="nav-item mx-2 navItem">
+                  <NavLink to="/contact" className={"nav-link text-dark"}>
+                    {" "}
+                    Contacto{" "}
+                  </NavLink>
+                </li>
+
+                <li className="nav-item mx-2 navItem">
+                  <NavLink to="/admin" className={"nav-link text-dark"}>
+                    {" "}
+                    Administración{" "}
+                  </NavLink>
+                </li>
+              </ul>
+              <div className="col d-lg-none">        
+            <InputGroup className="search-container mb-4  ">
+              <InputGroup.Text id="search">
+                <i className="bi bi-search cust-icon" role="button"></i>
+              </InputGroup.Text>
+              <Form.Control aria-describedby="search" placeholder="Buscar..." />
+            </InputGroup>
+          </div>
+              </div>
             {/* <!--Login / Sign up  --> */}
-            <div className="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-              
-              <NavLink to="/error" className={'sub-btn px-5 mx-5  text-dark '}> Ingresá </NavLink>
-              <NavLink to="/" className={'sub-btn  text-dark'}> Creá tu cuenta </NavLink>
+            <div className="d-flex flex-column flex-lg-row justify-content-start align-items-center gap-3">
+              <NavLink
+                to="/error"
+                className={"text-center fw-bolder nav-link text-dark"}
+              >
+                {" "}
+                <i className="bi bi-info-square fs-3 cust-icon"></i>{" "}
+              </NavLink>
+
+              <NavLink to="/error" className={"sub-btn text-dark "}>
+                Ingresá{" "}
+              </NavLink>
+              <NavLink to="/" className={"sub-btn"}>
+                {" "}
+                Creá tu cuenta{" "}
+              </NavLink>
             </div>
           </div>
         </div>
