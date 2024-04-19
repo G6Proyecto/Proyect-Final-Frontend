@@ -1,4 +1,5 @@
 import NavBar from "./Components/Navbar/NavBar";
+import Socials from "./Components/Navbar/Socials";
 import Footer from "./Components/Footer/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Components/Pages/Home";
@@ -10,7 +11,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <header>
+        <header className="sticky-top">
+          <Socials/>
           <NavBar />
         </header>
         <main>
