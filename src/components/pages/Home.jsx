@@ -1,13 +1,14 @@
-import ListProduct from '../product/listProduct'
+import ListProduct from "../product/listProduct"
+import FilterProduct from "../product/filterProduct";
 import "../product/listProduct.css"
 const Home = () => {
     return (
     <>
 
-        <section className='sectionProducts w-75 m-3'> 
-            <ListProduct className="contentProduct"></ListProduct>
-        </section>
-        
+        <div className="d-flex">
+            <ListProduct></ListProduct>
+            <FilterProduct></FilterProduct>
+        </div>
 
         
         </>
