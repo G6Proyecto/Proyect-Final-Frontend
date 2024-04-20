@@ -1,6 +1,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Administracion from "./Components/Pages/Administracion";
 import CreateProducts from "./Components/Sections/AdminProducts/CreateProducts";
 
 
@@ -8,9 +9,12 @@ function App() {
   return (
     <>
       
-        <header></header>
+        <header>
+          
+        </header>
         <main>
-      <CreateProducts></CreateProducts>
+
+         <Administracion></Administracion>
         </main>
         <footer></footer>
     
