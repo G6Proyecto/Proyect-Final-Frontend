@@ -26,6 +26,7 @@ const FilterProduct = () => {
                 key={index}
                 onClick={() => handleButtonClick(index)}
                 variant={selectedButton === index ? 'primary' : 'secondary'}
+                className='m-2 flex-column d-flex w-75 mx-auto'
               >
                 {categoria}
               </Button>

@@ -4,7 +4,7 @@ import "./cardProduct.css"
 const cardProduct = () => {
     return (
         <Col>
-        <Card className="cardProduct">
+        <Card className="cardProduct ">
           <Card.Img variant="top" src="/src/assets/kqXzqebG.png" style={{ height: 'max-content' }} />
           <Card.Body>
             <Card.Title>Título de la tarjeta</Card.Title>
