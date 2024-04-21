@@ -1,0 +1,16 @@
+{
+    "usersAdmin": [
+        {
+            "id":"1",
+            "name":"marquitos",
+            "email":"marquitosz@gmail.com"
+        },
+
+        {
+            "id":"2",
+            "name":"maxi",
+            "email":"maxim@gmail.com"
+        }
+    ]
+    
+}
