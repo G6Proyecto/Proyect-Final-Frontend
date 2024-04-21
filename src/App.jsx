@@ -1,4 +1,4 @@
-import CarouselFadeExample from './Components/Carousel';
+
 import NavBar from "./Components/Navbar/NavBar";
 import Socials from "./Components/Navbar/Socials";
 import Footer from "./Components/Footer/Footer";
@@ -18,7 +18,6 @@ function App() {
           <NavBar />
         </header>
         <main className=''>
-        <CarouselFadeExample/>
           <Routes>
             <Route path="/" />
             <Route path="/contact" element={<Contact/>} />
