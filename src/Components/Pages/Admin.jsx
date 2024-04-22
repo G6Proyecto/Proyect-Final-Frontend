@@ -1,3 +1,4 @@
+
 import {useNavigate} from "react-router-dom";
 import TableProducts from "../Sections/AdminProducts/TableProducts";
 import { Button } from "react-bootstrap";
@@ -25,3 +26,4 @@ const Admin = () => {
   );
 };
 export default Admin;
+
