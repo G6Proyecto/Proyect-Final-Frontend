@@ -1,9 +1,9 @@
-import React from 'react';
+
 import Carousel from 'react-bootstrap/Carousel';
-import banner1 from './CarouselFolder/banner1.jpg';
-import banner2 from './CarouselFolder/banner2.jpg';
-import banner3 from './CarouselFolder/banner3.jpg';
-import "./Navbar/NavBar.css"
+import banner1 from '../CarouselFolder/banner1.jpg';
+import banner2 from '../CarouselFolder/banner2.jpg';
+import banner3 from '../CarouselFolder/banner3.jpg';
+import "../Navbar/NavBar.css"
 
 function CarouselFadeExample() {
   return (
