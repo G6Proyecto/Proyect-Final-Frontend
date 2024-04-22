@@ -1,18 +1,30 @@
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import productoImage from "./Img/img-adminProduc.webp";
+/* eslint-disable react/prop-types */
 import clsx from "clsx";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
+import { Modal, Button, Form } from "react-bootstrap";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const CreateProducts = () => {
+const ModalEditar = ({ show, handleClose, product, getProducts }) => {
+  //para editar y modificar el campo
+  useEffect(() => {
+    if (product) {
+      formik.setFieldValue("title", product.title, true);
+      formik.setFieldValue("category", product.category, true);
+      formik.setFieldValue("price", product.price, true);
+      formik.setFieldValue("description", product.description, true);
+      formik.setFieldValue("dateStock", product.dateStock, true);
+      formik.setFieldValue("url", product.url, true);
+    }
+  }, [product]);
+
   const API = import.meta.env.VITE_API;
+  console.log("api", API);
 
   const navigate = useNavigate();
-
-  console.log("api", API);
 
   const ProductSchema = Yup.object().shape({
     title: Yup.string()
@@ -53,34 +65,29 @@ const CreateProducts = () => {
     onSubmit: (values) => {
       console.log("values", values);
       Swal.fire({
-        title: "Desea subir el producto",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Guardar",
+        title: "Está seguro que quiere modificar el producto",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, modificar",
+      cancelButtonText: "No, no deseo eliminar",
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            // const response = await axios.post(
-            //   `${API}/products`,
-            //   values
-            // );
+            const response = await axios.put(
+              `${API}/collectionProducts/${product.id}`,
+              values
+            );
 
-            const response = await fetch(`${API}/collectionProducts`, {
-              method: "POST",
-              headers: { "content-Type": "application/json" },
-              body: JSON.stringify(values),
-            });
-
-            if (response.status === 201) {
-              formik.resetForm();
+            if (response.status === 200) {
               Swal.fire({
                 title: "Exito!",
-                text: "Se creo un nuevo producto",
+                text: "se edito el producto",
                 icon: "success",
               });
               navigate("/Admin");
+              closeHand();
             }
           } catch (error) {
             console.log("error", error);
@@ -90,21 +97,19 @@ const CreateProducts = () => {
     },
   });
 
+  const closeHand = () => {
+    getProducts();
+    formik.resetForm();
+    handleClose();
+  };
+
   return (
-    <div className="container-fluid">
-      <Button
-        variant="secondary"
-        onClick={() => {
-          navigate(-1);
-        }}
-      >
-        Atrás
-      </Button>
-      <h3 className="p-3">Crear nuevo producto</h3>
-      <div className="row">
-        {/* Primera columna */}
-        <div className="col-lg-6 col-12 mx-auto my-4 rounded border border-3 p-2 shadow">
-          {/*Se inicia el formulario  */}
+    <>
+      <Modal show={show} backdrop="static" onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Editar producto</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <Form onSubmit={formik.handleSubmit}>
             <Form.Group controlId="title">
               <Form.Label className="text-start p-1">Título</Form.Label>
@@ -275,23 +280,39 @@ const CreateProducts = () => {
                 </div>
               )}
             </Form.Group>
-            <Button variant="danger" type="submit">
+
+            <Button variant="primary" className="mx-2" type="submit">
               Guardar
             </Button>
+            <Button
+              variant="danger"
+              className="mx-2"
+              onClick={() => {
+                formik.resetForm()
+                closeHand();
+              }}
+            >
+              Cerrar
+            </Button>
           </Form>
-        </div>
-
-        {/* Segunda columna */}
-        <div className="col-lg-6 col-12 d-flex align-items-start justify-content-center mx-auto my-4">
-          <img
-            className="img-fluid w-100 h-75 rounded border border-3"
-            src={productoImage}
-            alt="Foto del producto"
-          />
-        </div>
-      </div>
-    </div>
+        </Modal.Body>
+      </Modal>
+    </>
   );
 };
 
-export default CreateProducts;
+export default ModalEditar;
+
+// const EditeProducts = ({show, handleClose, product, getProduct}) => {
+//     const navigate=useNavigate();
+//     const API=import.meta.env.VITE_API;
+//     useEffect()
+
+//     return (
+//         <div>
+
+//         </div>
+//     );
+// };
+
+// export default EditeProducts;
