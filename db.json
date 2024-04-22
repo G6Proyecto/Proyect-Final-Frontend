@@ -1,42 +1,15 @@
 {
-    "products": [
-      {
-        "id": "d890",
-        "title": "Hamburgesa simple",
-        "description": "El sabor de la carne 100% vacuna más deliciosa, acompañado del pan más esponjoso, kétchup, mostaza y cebolla triturada.",
-        "img":"https://cache-backend-mcd.mcdonaldscupones.com/media/image/product$kqXzqebG/200/200/original?country=ar",
-        "category": "Hamburguesas"
-      },
-      {
-        "id": "5ecd",
-        "title": "Hamburguesa con Queso",
-        "img":"https://cache-backend-mcd.mcdonaldscupones.com/media/image/product$kqX8TYcp/200/200/original?country=ar",
-        "description": "Carne 100% vacuna, queso derretido y mostaza, kétchup y cebolla triturada, es algo que nunca puede fallar. Un clásico que nunca pasa de moda.",
-        "category": "Hamburguesas"
-      },
-      {
-        "id": "5ecd",
-        "title": "Fideo",
-        "description": "Fideo Entrefino 1Kilo",
-        "category": "Ensaladas"
-      },
-      {
-        "id": "5ecd",
-        "title": "Fideo",
-        "description": "Fideo Entrefino 1Kilo",
-        "category": "Ensaladas"
-      },
-      {
-        "id": "5ecd",
-        "title": "Fideo",
-        "description": "Fideo Entrefino 1Kilo",
-        "category": "Bebidas"
-      },
-      {
-        "id": "5ecd",
-        "title": "Fideo",
-        "description": "Fideo Entrefino 1Kilo",
-        "category": "Postres"
-      }
-    ]
-  }
+
+  "collectionProducts": [
+    {
+      "title": "HOYjjwdwd",
+      "category": "Hamburguesas",
+      "price": "xaxaxax",
+      "description": "asdasd",
+      "dateStock": "2024-04-11",
+      "url": "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg",
+      "id": "3bcf"
+    }
+  ]
+}
+

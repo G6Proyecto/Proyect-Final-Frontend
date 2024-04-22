@@ -1,4 +1,4 @@
-
+import CreateProducts from "./Components/Sections/AdminProducts/CreateProducts";
 import NavBar from "./Components/Navbar/NavBar";
 import Socials from "./Components/Navbar/Socials";
 import Footer from "./Components/Footer/Footer";
@@ -12,6 +12,7 @@ import AboutProduct from "./Components/Pages/product/about-product/aboutProduct"
 
 
 
+
 function App() {
   return (
     <>
@@ -20,12 +21,13 @@ function App() {
           <Socials />
           <NavBar />
         </header>
-        <main className="">
+        <main className=''>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/error" element={<Error404 />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/" element={<Home/>} />
+            <Route path="/contact" element={<Contact/>} />
+            <Route path="/error" element={<Error404/>} />
+            <Route path="/Admin" element={<Admin/>} />
+            <Route path="/CreateProducts" element={<CreateProducts/>}></Route>
             <Route path="/productDetail/:id" element={<AboutProduct />} />
           </Routes>
         </main>
