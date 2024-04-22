@@ -1,3 +1,5 @@
+
+import CreateProducts from "./Components/Sections/AdminProducts/CreateProducts";
 import CarouselFadeExample from './Components/Carousel';
 import NavBar from "./Components/Navbar/NavBar";
 import Socials from "./Components/Navbar/Socials";
@@ -9,9 +11,11 @@ import Error404 from "./Components/Pages/Error404";
 import Contact from "./Components/Pages/Contact";
 
 
+
 function App() {
   return (
     <>
+
 
       <BrowserRouter>
         <header className="sticky-top">
@@ -19,12 +23,12 @@ function App() {
           <NavBar />
         </header>
         <main className=''>
-        <CarouselFadeExample/>
           <Routes>
             <Route path="/" element={<Home/>} />
             <Route path="/contact" element={<Contact/>} />
             <Route path="/error" element={<Error404/>} />
-            <Route path="/admin" element={<Admin/>} />
+            <Route path="/Admin" element={<Admin/>} />
+            <Route path="/CreateProducts" element={<CreateProducts/>}></Route>
           </Routes>
         </main>
         <footer>
