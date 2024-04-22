@@ -1,6 +1,10 @@
 .cardProduct{
     min-width: 100px;
 }
+.cardTitle{
+height: 6rem;
+
+}
 .imgCard{
     width: 100%;
     height: 300px;

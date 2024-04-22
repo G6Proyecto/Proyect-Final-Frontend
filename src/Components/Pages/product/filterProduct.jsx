@@ -1,40 +1,42 @@
 import { useState } from 'react';
 import { Button, Collapse } from 'react-bootstrap';
 
-const FilterProduct = () => {
-    const [open, setOpen] = useState(false);
-    const [selectedButton, setSelectedButton] = useState(null);
+// eslint-disable-next-line react/prop-types
+const FilterProduct = ({ onCategorySelect }) => {
+  const [open, setOpen] = useState(false);
   
-    const handleButtonClick = (buttonId) => {
-      setSelectedButton(buttonId);
-    };
-  
-    return (
-      <>
-      
-        <Button
-          onClick={() => setOpen(!open)}
-          aria-controls="example-collapse-text"
-          aria-expanded={open}
-        >
-          Toggle
-        </Button>
-        <Collapse in={open}>
-          <div id="example-collapse-text">
-            {['Categoria 1', 'Categoria 2', 'Categoria 3', 'Categoria 4'].map((categoria, index) => (
-              <Button
-                key={index}
-                onClick={() => handleButtonClick(index)}
-                variant={selectedButton === index ? 'primary' : 'secondary'}
-                className='m-2 flex-column d-flex w-75 mx-auto'
-              >
-                {categoria}
-              </Button>
-            ))}
-          </div>
-        </Collapse>
-      </>
-    );
+  const handleButtonClick = (category) => {
+    if (category === 'Todos') {
+      onCategorySelect(null);
+    } else {
+      onCategorySelect(category);
+    }
   };
-  
-  export default FilterProduct;
+
+  return (
+    <>
+      <Button
+        onClick={() => setOpen(!open)}
+        aria-controls="example-collapse-text"
+        aria-expanded={open}
+      >
+        Toggle
+      </Button>
+      <Collapse in={open}>
+        <div id="example-collapse-text">
+          {['Hamburguesas', 'Ensaladas', 'Bebidas', 'Postres', 'Todos'].map((category, index) => (
+            <Button
+              key={index}
+              onClick={() => handleButtonClick(category)}
+              className='m-2 flex-column d-flex w-75 mx-auto'
+            >
+              {category}
+            </Button>
+          ))}
+        </div>
+      </Collapse>
+    </>
+  );
+};
+
+export default FilterProduct;
