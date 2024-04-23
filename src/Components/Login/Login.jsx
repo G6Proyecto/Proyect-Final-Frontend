@@ -4,18 +4,24 @@ import clsx from "clsx";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import axios from "axios";
+import { useContext } from "react";
+import UserContext from "../../Context/UserContext";
 
 const Login = ({ isOpen, handleClose }) => {
-  const API=import.meta.env.VITE_API;
+  const API = import.meta.env.VITE_API;
+  const { setCurrentUser, SaveAuth } = useContext(UserContext);
+
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
       .email("Formato invalido")
       .min(7)
       .max(128)
       .required("El email es requerido"),
-    password: Yup.string().min(6).max(30).required(),
+    password: Yup.string()
+      .min(6)
+      .max(30)
+      .required("La contraseña es requerido"),
   });
-  
 
   const initialValues = {
     email: "",
@@ -29,15 +35,18 @@ const Login = ({ isOpen, handleClose }) => {
     validateOnChange: true,
     onSubmit: async (values) => {
       try {
-        const response=await axios.post(`${API}/users/login`, values);
-        if (response.status===200) {
+        const response = await axios.post(`${API}/users`, values);
+        console.log(values);
+        if (response.status === 200) {
+          SaveAuth(response.data);
+          setCurrentUser(response.data);
           formik.resetForm();
           handleClose();
         } else {
-          alert('Ocurrio un error')
+          alert("Ocurrio un error", error);
         }
       } catch (error) {
-        console.log(error);
+        throw error
       }
     },
   });
@@ -45,7 +54,6 @@ const Login = ({ isOpen, handleClose }) => {
   return (
     <>
       <Modal show={isOpen} onHide={handleClose} className="modal-bg">
-        <div className="border border-1rounded-5">
           <Modal.Header closeButton className="">
             <Modal.Title>Ingresá</Modal.Title>
           </Modal.Header>
@@ -119,7 +127,7 @@ const Login = ({ isOpen, handleClose }) => {
               </div>
             </Form>
           </Modal.Body>
-        </div>
+
       </Modal>
     </>
   );

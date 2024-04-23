@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "José",
+      "email": "admin@admin.com",
+      "password": "Password!123",
+      "role": "Administrador"
+    },
+    {
+      "id": "1",
+      "name": "Marcos",
+      "email": "noadmin@noadmin.com",
+      "password": "Password!123",
+      "role": "cliente"
+    },
+    {
+      "id": "a709",
+      "email": "ssadasdasa@asdasd",
+      "password": "asdasdasd"
+    },
+    {
+      "id": "e3e3",
+      "email": "ssadasdasa@asdasd",
+      "password": "asdasdasd"
+    },
+    {
+      "id": "68ef",
+      "email": "asdasd@asdas",
+      "password": "asdasdada"
+    },
+    {
+      "id": "a6b9",
+      "email": "asdasd@asdas",
+      "password": "asdasdada"
+    }
+  ]
+}
