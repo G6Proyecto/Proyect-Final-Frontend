@@ -1,73 +1,52 @@
-import  axios  from "axios";
+import axios from "axios";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-//import Swal from "sweetalert2";
-const Users = ({ user, handleShow, getUsers }) => {
-const navigate = useNavigate();
-    const API = import.meta.env.VITE_API;
-    /* const handleDelete = () => {
+import Swal from "sweetalert2";
+import DeleteUsers from "../sections/DeleteUsers";
+import EditUsers from "../sections/EditUsers"; // Importa el componente EditUsers
+
+const Users = ({ user, getUsers, handleShow }) => {
+  const navigate = useNavigate();
+  const API = import.meta.env.VITE_API;
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`${API}/users/${user._id}`);
+      getUsers();
       Swal.fire({
-        title: "Estas seguro de eliminar este usuario?",
-  
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Borrar",
-        cancelButtonText: "No, me equivoque",
-      }).then(async (result) => {
-        if (result.isConfirmed) {
-          try {
-            await axios.delete(`${API}/users/${user._id}`)
-            getUsers();
-          } catch (error) {
-            console.log("ERROR-->", error);
-          }
-          Swal.fire({
-            title: "Exito!",
-            text: "se elimino un usuario",
-            icon: "success",
-          });
-        }
+        title: "Exito!",
+        text: "Se eliminó un usuario",
+        icon: "success",
       });
-    };
-    */
-    return (
-      <>
-      
-        <tr>
+    } catch (error) {
+      console.log("ERROR-->", error);
+    }
+  };
+
+  return (
+    <>
+      <tr>
         <td>{user.id}</td>
         <td>{user.name}</td>
         <td>{user.email}</td>
         <td className="d-flex justify-content-around">
           <Button
             type="button"
-            variant="warning"
-            /*onClick={() => {
-              navigate(`/editar/${user._id}`);
-            }}*/
-          >
-            Editar
-          </Button>
-         {/* <Button
-            type="button"
             variant="success"
             onClick={() => {
               console.log("modal edicion");
-              handleShow(user);
+              handleShow(user); // Llama a handleShow para abrir el modal con el usuario correspondiente
             }}
           >
-            M.Editar
-          </Button>*/}
-
-          <Button type="button" variant="danger">
-            Eliminar
+            Cambiar rol
           </Button>
-          {/* <Borraruser id={user.id} getusers={getusers} /> */}
+          <DeleteUsers id={user.id} role={user.role} getUsers={getUsers}>
+            Eliminar
+          </DeleteUsers>
         </td>
       </tr>
-      </>
-    );
-  };
-  
-  export default Users;
+    </>
+  );
+};
+
+export default Users;

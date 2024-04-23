@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Table, Form, Row, Col } from "react-bootstrap";
 import Users from "../sections/users"
 import  axios  from "axios";
+import EditUser from "./EditUsers";
 
 const ListUsers = () => {
   const [user, setUser] = useState([]);
- /* const [show, setShow] = useState(false);
+ const [show, setShow] = useState(false);
   const [usersEdit, setUsersEdit] = useState(undefined);
   //const [filtroRol, setFiltroRol] = useState("");
 //  const [busquedaNombre, setBusquedaNombre] = useState("");
@@ -18,7 +19,7 @@ const ListUsers = () => {
   const handleShow = (user) => {
     setUsersEdit(user);
     setShow(true);
-  };*/
+  };
 
   const API_URL = import.meta.env.VITE_API;
 
@@ -38,6 +39,12 @@ const ListUsers = () => {
 
   return (
     <>
+     <EditUser
+        show={show}
+        handleClose={handleClose}
+        user={usersEdit}
+        getUsers={getUsers}
+      />
       <div className="container-fluid">
         <div className="text-center">
           <h2>Listado de Usuarios Registrados</h2>
@@ -60,6 +67,7 @@ const ListUsers = () => {
 
                 <Users
                   user={users}
+                  handleShow={handleShow}
                   key={users.id}
                   getUsers={getUsers}
                 />)
