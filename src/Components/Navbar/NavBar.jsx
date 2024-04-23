@@ -2,9 +2,22 @@ import { NavLink } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { Form, InputGroup } from "react-bootstrap";
 import "./NavBar.css";
+import Login from "../Login/Login";
+import { useState } from "react";
 
 const NavBar = () => {
+
+  const [isOpen, setIsOpen]=useState(false);
+  const handleShow=()=>{
+    setIsOpen(true)
+  };
+  const handleClose=()=>{
+    setIsOpen(false)
+  };
+  
   return (
+    <>
+    <Login isOpen={isOpen} handleClose={handleClose} />
     <nav className="navcolor navbar-dark navbar navbar-expand-lg text-primary ">
       <div className="container-fluid d-flex justify-content-end">
         {/* <!-- Toggler Btn--> */}
@@ -43,8 +56,8 @@ const NavBar = () => {
               <ul className="navbar-nav justify-content-center fs-5 flex-grow-1 pe-3">
                 <li className="nav-item mx-2  navItem">
                   <NavLink to="/" className={"nav-link text-dark"}>
-                    {" "}
-                    Inicio{" "}
+                    
+                    Inicio
                   </NavLink>
                 </li>
                 <li className="nav-item mx-2 navItem">
@@ -72,15 +85,16 @@ const NavBar = () => {
                 </li>
                 <li className="nav-item mx-2 navItem">
                   <NavLink to="/contact" className={"nav-link text-dark"}>
-                    {" "}
-                    Contacto{" "}
+                    
+                    Contacto
                   </NavLink>
                 </li>
 
                 <li className="nav-item mx-2 navItem">
-                  <NavLink to="/admin" className={"nav-link text-dark"}>
-                    {" "}
-                    Administración{" "}
+                  <NavLink to="/Admin" className={"nav-link text-dark"}>
+                  <i className="bi bi-incognito"></i>
+                 
+                    Administración
                   </NavLink>
                 </li>
               </ul>
@@ -99,22 +113,23 @@ const NavBar = () => {
                 to="/error"
                 className={"text-center fw-bolder nav-link text-dark"}
               >
-                {" "}
-                <i className="bi bi-info-square fs-3 cust-icon"></i>{" "}
+                
+                <i className="bi bi-info-square fs-3 cust-icon"></i>
               </NavLink>
 
-              <NavLink to="/error" className={"sub-btn text-dark "}>
-                Ingresá{" "}
+              <NavLink to="/error" className={"sub-btn text-dark "} onClick={handleShow}>
+                Ingresá
               </NavLink>
               <NavLink to="/" className={"sub-btn"}>
-                {" "}
-                Creá tu cuenta{" "}
+                
+                Creá tu cuenta
               </NavLink>
             </div>
           </div>
         </div>
       </div>
     </nav>
+    </>
   );
 };
 
