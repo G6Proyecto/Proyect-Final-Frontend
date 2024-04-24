@@ -29,6 +29,7 @@ const Users = ({ user, getUsers, handleShow }) => {
         <td>{user.id}</td>
         <td>{user.name}</td>
         <td>{user.email}</td>
+        <td>{user.role}</td>
         <td className="d-flex justify-content-around">
           <Button
             type="button"
