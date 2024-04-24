@@ -1,16 +1,15 @@
 {
-  "usersAdmin": [
+
+  "collectionProducts": [
     {
-      "id": "2",
-      "name": "maxi",
-      "email": "maxim@gmail.com",
-      "role": "Administrador"
-    },
-    {
-      "id": "3",
-      "name": "marcos",
-      "email": "marcosm@gmail.com",
-      "role": "Administrador"
+      "title": "HOYjjwdwd",
+      "category": "Hamburguesas",
+      "price": "xaxaxax",
+      "description": "asdasd",
+      "dateStock": "2024-04-11",
+      "url": "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg",
+      "id": "3bcf"
     }
   ]
 }
+
