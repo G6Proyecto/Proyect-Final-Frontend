@@ -2,13 +2,22 @@
 
   "collectionProducts": [
     {
-      "title": "HOYjjwdwd",
+      "title": "Hambuerguesa simple",
       "category": "Hamburguesas",
       "price": "xaxaxax",
       "description": "asdasd",
       "dateStock": "2024-04-11",
       "url": "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg",
       "id": "3bcf"
+    },
+    {
+      "title": "Hambuerguesa con queso",
+      "category": "Hamburguesas",
+      "price": "xaxaxax",
+      "description": "asdasd",
+      "dateStock": "2024-04-11",
+      "url": "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg",
+      "id": "4bcf"
     }
   ]
 }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-
-=======
 import CreateProducts from "./Components/Sections/AdminProducts/CreateProducts";
->>>>>>> d6ed308950d99930c34afe58818644124229cc5f
 import NavBar from "./Components/Navbar/NavBar";
 import Socials from "./Components/Navbar/Socials";
 import Footer from "./Components/Footer/Footer";
@@ -11,6 +7,7 @@ import Admin from "./Components/Pages/Admin";
 import Error404 from "./Components/Pages/Error404";
 import Contact from "./Components/Pages/Contact";
 import AboutProduct from "./Components/Pages/product/about-product/aboutProduct"
+import Home from "./Components/Pages/Home";
 
 
 
@@ -26,7 +23,7 @@ function App() {
         </header>
         <main className=''>
           <Routes>
-            <Route path="/" />
+            <Route path="/" element={<Home/>}/>
             <Route path="/contact" element={<Contact/>} />
             <Route path="/error" element={<Error404/>} />
             <Route path="/Admin" element={<Admin/>} />
