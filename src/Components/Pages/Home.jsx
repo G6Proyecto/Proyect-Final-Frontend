@@ -14,7 +14,7 @@ const Home = () => {
 
   const getProducts = async ()=>{
     try {
-        const response =await axios.get(`${API}/products`)
+        const response =await axios.get(`${API}/collectionProducts`)
         setProducts(response.data);
     } catch (error) {
       console.log("Error en get axios---->", error);
@@ -37,9 +37,10 @@ const Home = () => {
     : products;
 
   return (
-    <>
+    <body>
       <CarouselFadeExample />
-        <Container fluid className="mt-4">
+      <article className="">
+        <Container fluid className="my-4">
           <Row>
             <Col md={3} xs={12}>
               <FilterProduct onCategorySelect={handleCategorySelect} />
@@ -55,7 +56,8 @@ const Home = () => {
             </Col>
           </Row>
         </Container>
-    </>
+      </article>
+    </body>
   );
 };
 
