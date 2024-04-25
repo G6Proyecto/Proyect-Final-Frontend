@@ -1,24 +1,24 @@
 :root {
-  --primario: #ab1f2c;
-  --secundario: #d8973c;
-  --terciario: #bd632f;
-  --cuarto: #ec9924;
-  --quinto: #e5e9f3;
+  --primary: #ab1f2c;
+  --secondary: #d8973c;
+  --tertiary: #bd632f;
+  --fourth: #ec9924;
+  --fifth: #e5e9f3;
 }
 
 .navcolor {
-  background-color: var(--cuarto);
+  background-color: var(--fourth);
 }
 
 .logo img {
   height: 2em;
   width: 5em;
-  background-color: var(--quinto);
+  background-color: var(--fifth);
   object-fit: contain;
   margin: 15px 0 0 15px;
   border-radius: 15px;
-  border-left: var(--primario) 5px solid;
-  border-bottom: var(--primario) 5px solid;
+  border-left: var(--primary) 5px solid;
+  border-bottom: var(--primary) 5px solid;
   
 }
 
@@ -31,7 +31,7 @@
 .sub-btn {
   font-size: 15px;
   font-weight: bold;
-  background: var(--secundario);
+  background: var(--secondary);
   width: 160px;
   padding: 10px;
   text-align: center;
@@ -39,7 +39,7 @@
   text-transform: uppercase;
   color: #fff;
   border-radius: 15px;
-  border: var(--quinto) 2px solid;
+  border: var(--fifth) 2px solid;
   cursor: pointer;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   -webkit-transition-duration: 0.3s;
@@ -87,7 +87,7 @@
 
 
 .cust-icon:hover {
-  color: var(--primario);
+  color: var(--primary);
   font-weight: bolder;
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
@@ -95,7 +95,7 @@
 
 .search-container {
   top: 20px;
-  background-color: var(--quinto);
+  background-color: var(--fifth);
   z-index: 999;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   width: 50px;

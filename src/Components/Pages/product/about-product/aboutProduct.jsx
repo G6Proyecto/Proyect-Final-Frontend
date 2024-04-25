@@ -1,5 +1,5 @@
 import axios from "axios";
-import "../about-product/aboutProduct.css"
+import "../productStyle.css"
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -15,7 +15,7 @@ const aboutProduct = () => {
 
   const getProduct = async()=>{
     try {
-        const {data}= await axios.get(`${API}/products/${id}`);
+        const {data}= await axios.get(`${API}/collectionProducts/${id}`);
         setProduct(data);
     } catch (error) {
         console.log("Error--->", error);
@@ -36,7 +36,7 @@ const navigate = useNavigate()
     {
         <div className="details" key={product._id}>
           <div className="big-img">
-            <img src={product.img} alt=""/>
+            <img src={product.url} alt=""/>
           </div>
 
           <div className="box">
