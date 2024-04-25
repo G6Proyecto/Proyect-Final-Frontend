@@ -1,4 +1,22 @@
 {
+  "users/login": [
+    {
+      "id": "1",
+      "name": "José",
+      "email": "admin@admin.com",
+      "password": "Password!123",
+      "role": "Administrador"
+    },
+    {
+      "id": "1",
+      "name": "Marcos",
+      "email": "noadmin@noadmin.com",
+      "password": "Password!123",
+      "role": "cliente"
+    }
+  ],
+  "users/regis": []
+}
 
   "collectionProducts": [
     {
