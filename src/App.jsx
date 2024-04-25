@@ -1,10 +1,10 @@
-import CarouselFadeExample from "./Components/Carousel";
+import CreateProducts from "./Components/Sections/AdminProducts/CreateProducts";
 import NavBar from "./Components/Navbar/NavBar";
 import Socials from "./Components/Navbar/Socials";
 import Footer from "./Components/Footer/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Components/Pages/Home";
-import Admin from "./Components/Pages/Admin";
+import ListUsers from "./Components/sections/ListUsers";
 import Error404 from "./Components/Pages/Error404";
 import Contact from "./Components/Pages/Contact";
 import UserContext from "./Context/UserContext";
@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function App() {
+
   const [currentUser, setCurrentUser] = useState(undefined);
 
   const SaveAuth=(auth)=>{
@@ -58,7 +59,6 @@ function App() {
             <NavBar />
           </header>
           <main className="">
-            <CarouselFadeExample />
             <Routes>
               <Route index path="/" element={<Home />} />
               <Route path="/contact" element={<Contact />} />
