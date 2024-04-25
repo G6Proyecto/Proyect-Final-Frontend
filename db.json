@@ -1,5 +1,5 @@
 {
-  "users": [
+  "users/login": [
     {
       "id": "1",
       "name": "José",
@@ -13,26 +13,7 @@
       "email": "noadmin@noadmin.com",
       "password": "Password!123",
       "role": "cliente"
-    },
-    {
-      "id": "a709",
-      "email": "ssadasdasa@asdasd",
-      "password": "asdasdasd"
-    },
-    {
-      "id": "e3e3",
-      "email": "ssadasdasa@asdasd",
-      "password": "asdasdasd"
-    },
-    {
-      "id": "68ef",
-      "email": "asdasd@asdas",
-      "password": "asdasdada"
-    },
-    {
-      "id": "a6b9",
-      "email": "asdasd@asdas",
-      "password": "asdasdada"
     }
-  ]
+  ],
+  "users/regis": []
 }

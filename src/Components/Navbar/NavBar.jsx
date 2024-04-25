@@ -5,11 +5,23 @@ import "./NavBar.css";
 import Login from "../Login/Login";
 import { useContext, useState } from "react";
 import UserContext from "../../Context/UserContext";
+import Register from "../Register/Register";
 
 const NavBar = () => {
   const { currentUser, setCurrentUser, RemoveAuth } = useContext(UserContext);
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const [isOpenRegis, setIsOpenRegis] = useState(false);
+
+  const handleShowRegis = () => {
+    setIsOpenRegis(true);
+  };
+
+  const handleCloseRegis = () => {
+    setIsOpenRegis(false);
+  };
+
   const handleShow = () => {
     setIsOpen(true);
   };
@@ -24,6 +36,7 @@ const NavBar = () => {
 
   return (
     <>
+    <Register isOpenRegis={isOpenRegis} handleCloseRegis={handleCloseRegis} />
       <Login isOpen={isOpen} handleClose={handleClose} />
       <nav className="navcolor navbar-dark navbar navbar-expand-lg text-primary ">
         <div className="container-fluid d-flex justify-content-end">
@@ -168,14 +181,14 @@ const NavBar = () => {
                 </NavLink>)}
                 
                 {(currentUser!==undefined && <NavLink
-                  to="/error"
+                  to="/*"
                   className={"sub-btn text-dark "}
                   onClick={LogOut}
                 >
                   Cerrar Sesión
                 </NavLink>)}
                 
-                {(currentUser===undefined && <NavLink to="/" className={"sub-btn"}>
+                {(currentUser===undefined && <NavLink to="/" className={"sub-btn"} onClick={handleShowRegis}>
                   Creá tu cuenta
                 </NavLink> )}
                 

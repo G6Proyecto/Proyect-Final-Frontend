@@ -1,89 +1,78 @@
-import { Button, Modal, Form } from "react-bootstrap";
-import "../Navbar/NavBar.css";
-import clsx from "clsx";
-import * as Yup from "yup";
+import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
-import Swal from "sweetalert2";
+import * as Yup from "yup";
 import axios from "axios";
-import { useContext, useState } from "react";
+import clsx from "clsx";
+import { Button, Modal, Form } from "react-bootstrap";
 import UserContext from "../../Context/UserContext";
 
-
-const Login = ({ isOpen, handleClose }) => {
+const Register = ({ isOpenRegis, handleCloseRegis }) => {
   const API = import.meta.env.VITE_API;
   const { setCurrentUser, SaveAuth } = useContext(UserContext);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingRegis, setIsLoadingRegis] = useState(false);
 
-  const LoginSchema = Yup.object().shape({
+  const onSubmit = async (values) => {
+    console.log(values);
+    setIsLoadingRegis(true);
+    try {
+      const response = await axios.post(`${API}/users/regis`, values);
+      if (response.status === 201) {
+        console.log("Values-->", values);
+        SaveAuth(response.data);
+        setCurrentUser(response.data);
+        formik.resetForm();
+        setIsLoadingRegis(false);
+        handleCloseRegis();
+      }
+    } catch (error) {
+      setIsLoadingRegis(false);
+      alert(`${error.response.data.message}`);
+      console.error(error);
+    }
+  };
+
+  const RegisSchema = Yup.object().shape({
     email: Yup.string()
       .email("Formato invalido")
       .min(7)
       .max(128)
       .required("El email es requerido"),
     password: Yup.string()
-      .min(6)
-      .max(30)
-      .required("La contraseña es requerido"),
+      .min(7)
+      .max(128)
+      .required("La contraseña es requerida"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Las contraseñas deben coincidir")
+      .required("La contraseña es requerida"),
   });
 
   const initialValues = {
     email: "",
     password: "",
+    confirmPassword: "",
   };
 
   const formik = useFormik({
     initialValues,
-    validationSchema: LoginSchema,
+    validationSchema: RegisSchema,
     validateOnBlur: true,
     validateOnChange: true,
-    onSubmit: async (values) => {
-      setIsLoading(true);
-      Swal.fire({
-        title:  "Iniciando sesión",
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        showConfirmButton: false,
-        willOpen: ()=>{
-          Swal.showLoading();
-        },
-      });
-      try {
-        const response = await axios.post(`${API}/users/login`, values);
-        console.log(values);
-        if (response.status === 200) {
-          SaveAuth(response.data);
-          setCurrentUser(response.data);
-          formik.resetForm();
-          setIsLoading(false);
-          Swal.close(),
-          handleClose();
-        } else {
-          setIsLoading(false);
-          Swal.close(),
-          alert("Ocurrio un errorasdasd");
-        }
-      } catch (error) {
-        setIsLoading(false);
-        Swal.close(),
-        alert(`${error.response.data.message}`);
-        console.error(error);
-      }
-    },
+    onSubmit:  onSubmit ,
   });
 
   return (
     <>
-      <Modal show={isOpen} onHide={handleClose} className="modal-bg">
-        <Modal.Header closeButton className="">
-          <Modal.Title>Ingresá</Modal.Title>
+      <Modal show={isOpenRegis} onHide={handleCloseRegis}>
+        <Modal.Header closeButton>
+          <Modal.Title>Registrarme</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="">
+        <Modal.Body>
           <Form onSubmit={formik.handleSubmit}>
             <Form.Group className="mb-3" controlId="Email">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Ingresá tu email"
+                placeholder="Ingrese su email"
                 name="email"
                 {...formik.getFieldProps("email")}
                 className={clsx(
@@ -102,12 +91,11 @@ const Login = ({ isOpen, handleClose }) => {
                 </div>
               )}
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="Password">
               <Form.Label>Contraseña</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Ingresá tu contraseña"
+                placeholder="Ingrese su contraseña"
                 name="password"
                 {...formik.getFieldProps("password")}
                 className={clsx(
@@ -128,29 +116,53 @@ const Login = ({ isOpen, handleClose }) => {
                 </div>
               )}
             </Form.Group>
-
+            <Form.Group className="mb-3" controlId="PasswordConfirm">
+              <Form.Label>Repetir Contraseña</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Repita su contraseña"
+                name="confirmPassword"
+                {...formik.getFieldProps("confirmPassword")}
+                className={clsx(
+                  "form-control",
+                  {
+                    "is-invalid":
+                      formik.touched.confirmPassword && formik.errors.confirmPassword,
+                  },
+                  {
+                    "is-valid":
+                      formik.touched.confirmPassword && !formik.errors.confirmPassword,
+                  }
+                )}
+              />
+              {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+                <div className="mt-2 text-danger fw-bolder">
+                  <span role="alert">{formik.errors.confirmPassword}</span>
+                </div>
+              )}
+            </Form.Group>
             <div>
               <Button
-                type="submit"
                 variant="primary"
+                type="submit"
                 className="mx-2 mb-2 sub-btn"
-                disabled={isLoading}
+                disabled={isLoadingRegis}
               >
-                {isLoading ? (
+                {isLoadingRegis ? (
                   <div className="d-flex align-items-center justify-content-center">
-                    <strong role="status">Ingresando</strong>
+                    <strong role="status">Guardando</strong>
                     <div
                       className="spinner-border spinner-border-sm ms-auto"
                       aria-hidden="true"
                     ></div>
                   </div>
                 ) : (
-                  <>Ingresar</>
+                  <>Registrarme</>
                 )}
               </Button>
               <Button
                 variant="secondary"
-                onClick={handleClose}
+                onClick={handleCloseRegis}
                 className="mx-2 mb-2 sub-btn btn-danger"
               >
                 Cerrar
@@ -163,4 +175,4 @@ const Login = ({ isOpen, handleClose }) => {
   );
 };
 
-export default Login;
+export default Register;
