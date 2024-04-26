@@ -1,6 +1,6 @@
 
 import {useNavigate} from "react-router-dom";
-import TableProducts from "../Sections/AdminProducts/TableProducts";
+import TableProducts from "../sections/AdminProducts/TableProducts";
 import { Button } from "react-bootstrap";
 
 const Admin = () => {

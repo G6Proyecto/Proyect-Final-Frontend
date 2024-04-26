@@ -1,4 +1,4 @@
-import CreateProducts from "./Components/Sections/AdminProducts/CreateProducts";
+//import CreateProducts from "/Components/Sections/AdminProducts/CreateProducts";
 import NavBar from "./Components/Navbar/NavBar";
 import Socials from "./Components/Navbar/Socials";
 import Footer from "./Components/Footer/Footer";
@@ -7,6 +7,7 @@ import Home from "./Components/Pages/Home";
 import ListUsers from "./Components/sections/ListUsers";
 import Error404 from "./Components/Pages/Error404";
 import Contact from "./Components/Pages/Contact";
+import Admin from "./Components/Pages/Admin";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/contact" element={<Contact/>} />
             <Route path="/error" element={<Error404/>} />
             <Route path="/admin" element={<Admin/>} />
+            <Route path="/usersAdmin" element={<ListUsers/>} />
           </Routes>
         </main>
         <footer>

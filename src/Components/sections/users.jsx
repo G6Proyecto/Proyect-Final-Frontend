@@ -11,7 +11,7 @@ const Users = ({ user, getUsers, handleShow }) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${API}/users/${user._id}`);
+      await axios.delete(`${API}/usersAdmin/${user.id}`);
       getUsers();
       Swal.fire({
         title: "Exito!",
