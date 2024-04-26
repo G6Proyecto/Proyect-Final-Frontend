@@ -51,7 +51,7 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
     email: "",
     password: "",
     confirmPassword: "",
-    role: "Administrador",
+    role: "cliente",
   };
 
   const formik = useFormik({

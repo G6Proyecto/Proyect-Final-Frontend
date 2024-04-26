@@ -13,47 +13,23 @@
       "email": "noadmin@noadmin.com",
       "password": "Password!123",
       "role": "cliente"
-    },
-    {
-      "id": "5526",
-      "email": "admin@admin.com",
-      "password": "Password!123"
-    },
-    {
-      "id": "7a12",
-      "email": "admin@admin.com",
-      "password": "Password!123"
-    },
-    {
-      "id": "a803",
-      "email": "admin@admin.com",
-      "password": "Password!123"
-    },
-    {
-      "id": "bcd1",
-      "email": "admin@admin.com",
-      "password": "Password!123"
     }
   ],
   "regis": [
-    {
-      "id": "d404",
-      "email": "admin@gmail.com",
-      "password": "asdasda",
-      "confirmPassword": "asdasda"
-    },
-    {
-      "id": "b4d8",
-      "email": "asdasd@asdas",
-      "password": "asdasda",
-      "confirmPassword": "asdasda"
-    },
+    
     {
       "id": "6f97",
       "email": "asdasd@asdas.com",
       "password": "asdasda",
       "confirmPassword": "asdasda",
       "role": "cliente"
+    },
+    {
+      "id": "e200",
+      "email": "admin@gmail.com",
+      "password": "asdasda",
+      "confirmPassword": "asdasda",
+      "role": "Administrador"
     }
   ],
   "collectionProducts": [
