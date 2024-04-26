@@ -37,7 +37,7 @@ const Home = () => {
     : products;
 
   return (
-    <body>
+    <div>
       <CarouselFadeExample />
       <article className="">
         <Container fluid className="my-4">
@@ -57,7 +57,7 @@ const Home = () => {
           </Row>
         </Container>
       </article>
-    </body>
+    </div>
   );
 };
 

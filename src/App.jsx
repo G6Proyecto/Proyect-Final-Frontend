@@ -8,10 +8,10 @@ import Error404 from "./Components/Pages/Error404";
 import Contact from "./Components/Pages/Contact";
 import AboutProduct from "./Components/Pages/product/about-product/aboutProduct"
 import Home from "./Components/Pages/Home";
-import ListUsers from "./Components/sections/ListUsers";
 import UserContext from "./Context/UserContext";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ListUsers from "./Components/Sections/ListUsers";
 
 
 

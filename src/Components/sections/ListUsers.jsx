@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Table, Form, Row, Col } from "react-bootstrap";
-import Users from "../sections/users"
+import Users from "../Sections/users.jsx"
 import  axios  from "axios";
-import EditUser from "./EditUsers";
+import EditUser from "../Sections/EditUsers.jsx";
 
 const ListUsers = () => {
   const [user, setUser] = useState([]);
