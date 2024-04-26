@@ -1,5 +1,5 @@
 {
-  "users": [
+  "usersAdmin": [
     {
       "id": "1",
       "name": "José",
@@ -8,7 +8,7 @@
       "role": "Administrador"
     },
     {
-      "id": "1",
+      "id": "2",
       "name": "Marcos",
       "email": "noadmin@noadmin.com",
       "password": "Password!123",
@@ -16,16 +16,8 @@
     }
   ],
   "regis": [
-    
     {
-      "id": "6f97",
-      "email": "asdasd@asdas.com",
-      "password": "asdasda",
-      "confirmPassword": "asdasda",
-      "role": "cliente"
-    },
-    {
-      "id": "e200",
+      "id": "1da9",
       "email": "admin@gmail.com",
       "password": "asdasda",
       "confirmPassword": "asdasda",

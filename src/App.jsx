@@ -10,6 +10,7 @@ import Home from "./Components/Pages/Home";
 import UserContext from "./Context/UserContext";
 import { useEffect, useState } from "react";
 import CreateProducts from "./Components/Sections/AdminProducts/CreateProducts"
+import ListUsers from "./Components/Sections/ListUsers"
 //import axios from "axios";
 
 
@@ -74,6 +75,7 @@ function App() {
                 currentUser.role === "Administrador" && (
                   <><Route path="/Admin" element={<Admin />}/>
                   <Route path="/CreateProducts" element={<CreateProducts/>}/>
+                  <Route path="/ListUsers" element={<ListUsers/>} />
                   </>
                 )}
           </Routes>

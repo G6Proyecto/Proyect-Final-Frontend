@@ -1,10 +1,10 @@
-import banner1 from '../../CarouselFolder/banner1.jpg';
+import banner1 from '../../CarouselFolder/banner1.webp';
 import { Carousel } from 'react-bootstrap';
 
 const Publicity = () => {
     return (
         <Carousel 
-        className='my-4'
+        className='my-4 d-sm-none d-md-block'
         >
         <Carousel.Item interval={1000}>
         <img src={banner1} alt="First slide" className='imgback' />

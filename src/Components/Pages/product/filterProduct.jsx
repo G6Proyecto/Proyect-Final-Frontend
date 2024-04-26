@@ -32,7 +32,7 @@ const FilterProduct = ({ onCategorySelect }) => {
               key={index}
               onClick={() => handleButtonClick(category)}
               className='flex-column d-flex w-75 mx-auto my-2'
-              style={{backgroundColor:'var(--fourth)', border:'0', fontSize:'1.5rem', fontWeight:'500', color:'#111'}}
+              style={{backgroundColor:'var(--fourth)', border:'0', fontSize:'1rem', fontWeight:'500', color:'#111'}}
             >
               {category}
             </Button>
