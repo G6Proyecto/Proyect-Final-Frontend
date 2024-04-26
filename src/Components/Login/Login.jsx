@@ -48,9 +48,9 @@ const Login = ({ isOpen, handleClose }) => {
         },
       });
       try {
-        const response = await axios.post(`${API}/users/login`, values);
+        const response = await axios.post(`${API}/users`, values);
         console.log(values);
-        if (response.status === 200) {
+        if (response.status === 201) {
           SaveAuth(response.data);
           setCurrentUser(response.data);
           formik.resetForm();

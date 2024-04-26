@@ -1,4 +1,3 @@
-import CreateProducts from "./Components/Sections/AdminProducts/CreateProducts";
 import NavBar from "./Components/Navbar/NavBar";
 import Socials from "./Components/Navbar/Socials";
 import Footer from "./Components/Footer/Footer";
@@ -11,7 +10,7 @@ import Home from "./Components/Pages/Home";
 import UserContext from "./Context/UserContext";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ListUsers from "./Components/Sections/ListUsers";
+
 
 
 
@@ -42,17 +41,17 @@ function App() {
   },[]);
 
   //se va a encargar de manejar pura y exclusivamente la instancia de axios escuchando constantemente currentUser
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    if (currentUser!==undefined) {
-      //configuramos axios
-      axios.defaults.headers.common["Authorization"]=`Bearer ${currentUser.token}`;
-    }else{
-      //quitamos la configuración del header de axios
-      delete axios.defaults.headers.common["Authorization"];
-    }
+  //   if (currentUser!==undefined) {
+  //     //configuramos axios
+  //     axios.defaults.headers.common["Authorization"]=`Bearer ${currentUser.token}`;
+  //   }else{
+  //     //quitamos la configuración del header de axios
+  //     delete axios.defaults.headers.common["Authorization"];
+  //   }
 
-  },[currentUser]);
+  // },[currentUser]);
 
   return (
     <>
@@ -67,14 +66,14 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/contact" element={<Contact/>} />
             <Route path="/error" element={<Error404/>} />
-            <Route path="/Admin" element={<Admin/>} />
-            <Route path="/listUsers" element={<ListUsers/>} />
-            <Route path="/CreateProducts" element={<CreateProducts/>}></Route>
+            
             <Route path="/productDetail/:id" element={<AboutProduct />} />
             <Route path="/*" element={<Error404 />} />
               {currentUser !== undefined &&
                 currentUser.role === "Administrador" && (
-                  <Route path="/admin" element={<Admin />} />
+                  <><Route path="/Admin" element={<Admin />}/>
+                  <Route path="/CreateProducts" element={<CreateProducts/>}/>
+                  </>
                 )}
           </Routes>
         </main>
