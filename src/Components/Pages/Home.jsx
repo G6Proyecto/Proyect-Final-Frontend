@@ -5,6 +5,7 @@ import "../Navbar/NavBar.css"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CarouselFadeExample from "../CarouselFolder/Carousel";
+import Publicity from "../Sections/Publicity/Publicity";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -39,11 +40,12 @@ const Home = () => {
   return (
     <div>
       <CarouselFadeExample />
-      <article className="">
+      <article>
         <Container fluid className="my-4">
           <Row>
             <Col md={3} xs={12}>
               <FilterProduct onCategorySelect={handleCategorySelect} />
+              <Publicity/>
             </Col>
             <Col md={9} xs={12} className="mt-2">
               <Row xs={2} md={3} lg={5} className="row-gap-4">

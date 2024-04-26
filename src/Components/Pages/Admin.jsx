@@ -22,6 +22,16 @@ const Admin = () => {
        
       </div>
       <TableProducts></TableProducts>
+      <div className="container d-flex justify-content-center my-3 py-3">
+      <Button
+          variant="primary"
+          onClick={() => {
+            navigate("/ListUsers");
+          }}
+        >
+         Administrar Usuarios
+        </Button>
+      </div>
     </div>
   );
 };
