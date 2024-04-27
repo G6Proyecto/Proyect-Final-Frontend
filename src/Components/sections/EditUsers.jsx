@@ -1,10 +1,12 @@
 import { useEffect } from "react";
+import "../sections/users.css"
 import { Modal, Button, Form } from "react-bootstrap";
 import clsx from "clsx";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import Swal from "sweetalert2";
 import axios from "axios";
+
 
 const EditUser = ({ user, getUsers, show, handleClose }) => {
   const API = import.meta.env.VITE_API;
@@ -67,45 +69,47 @@ const EditUser = ({ user, getUsers, show, handleClose }) => {
   });
 
   return (
-    <Modal show={show} onHide={handleClose} backdrop="static" data-bs-theme="white" className="text-black">
+    <Modal show={show} onHide={handleClose} backdrop="static" data-bs-theme="dark" className="colors-custom-text">
       <Modal.Header closeButton>
-        <Modal.Title>Modal cambio de rol</Modal.Title>
+        <Modal.Title className="">Administracion de usuario</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={formik.handleSubmit}>
           <Form.Group className="mb-3" controlId="role">
-            <Form.Label>Rol</Form.Label>
+            <Form.Label>Elige el nuevo rol para el usuario</Form.Label>
             <Form.Select
+              
               aria-label="role"
               name="role"
               {...formik.getFieldProps("role")}
-              className={clsx(
+              className= {clsx(
                 "form-control",
                 { "is-invalid": formik.touched.role && formik.errors.role },
                 { "is-valid": formik.touched.role && !formik.errors.role }
-              )}
+              )} 
             >
-              <option value="">Seleccione un rol</option>
-              <option value="Cliente">Cliente</option>
-              <option value="Administrador">Administrador</option>
+              <option className="" value="">Seleccione un rol</option>
+              <option className="" value="Cliente">Cliente</option>
+              <option className="" value="Administrador">Administrador</option>
             </Form.Select>
             {formik.touched.role && formik.errors.role && (
               <div className="mt-2 text-danger fw-bold">{formik.errors.role}</div>
             )}
           </Form.Group>
           <div>
-            <Button variant="primary" type="submit" className="mx-2">
+            <button type="submit" variant="" className=" bg-custom-colors-modal-success mx-2">
               Guardar
-            </Button>
-            <Button
+            </button>
+            <button
               variant="danger"
               onClick={() => {
                handleClose();
               }}
-              className="mx-2"
+              className=" bg-custom-colors-modal-cancel
+              mx-2"
             >
               Cerrar
-            </Button>
+            </button>
           </div>
         </Form>
       </Modal.Body>

@@ -25,23 +25,26 @@ const Users = ({ user, getUsers, handleShow }) => {
 
   return (
     <>
-      <tr>
-        <td>{user.id}</td>
-        <td>{user.name}</td>
-        <td>{user.email}</td>
-        <td>{user.role}</td>
+      <tr className="">
+        <td className="text-center m-2">{user.id}</td>
+        <td className="text-center m-2">{user.name}</td>
+        <td className="text-center m-2">{user.email}</td>
+        <td className="text-center m-2">{user.role}</td>
         <td className="d-flex justify-content-around">
-          <Button
+          <button
             type="button"
-            variant="success"
+            variant=""
+            className="colors-button-text bg-custom-colors-modal-success m-2"
             onClick={() => {
               console.log("modal edicion");
               handleShow(user); // Llama a handleShow para abrir el modal con el usuario correspondiente
             }}
           >
             Cambiar rol
-          </Button>
-          <DeleteUsers id={user.id} role={user.role} getUsers={getUsers}>
+
+          </button>
+          
+          <DeleteUsers className="" id={user.id} role={user.role} getUsers={getUsers}>
             Eliminar
           </DeleteUsers>
         </td>

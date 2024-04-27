@@ -47,19 +47,19 @@ const ListUsers = () => {
       />
       <div className="container-fluid">
         <div className="text-center">
-          <h2>Listado de Usuarios Registrados</h2>
+          <h2>Usuarios Registrados</h2>
         </div>
         <div className="container-fluid">
         </div>
         <div className="table-responsive">
           <Table striped bordered hover variant="">
             <thead>
-              <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Email</th>
-                <th>Rol</th>
-                <th>Acciones</th>
+              <tr className="">
+                <th className="text-center m-2">ID</th>
+                <th className="text-center m-2">Nombre</th>
+                <th className="text-center m-2">Email</th>
+                <th className="text-center m-2">Rol</th>
+                <th className="text-center m-2">Acciones</th>
                 
               </tr>
             </thead>

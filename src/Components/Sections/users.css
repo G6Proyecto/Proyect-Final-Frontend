@@ -1,0 +1,41 @@
+.colors-custom-text {   color: #FFDB58; /* Color mostaza en formato hexadecimal */
+  }
+.colors-button-text {   color: #f4f3ef; /* Color mostaza en formato hexadecimal */
+}
+
+
+.bg-custom-colors-modal-cancel:hover {
+  background-color: #d8973c;
+}
+
+
+.bg-custom-colors-modal-success {
+  position: relative; /* Agrega posición relativa para que el posicionamiento absoluto funcione correctamente */
+  background-color: #d8973c;
+  border-radius: 50px;
+  border: #ab1f2c;
+  height: autopx;
+  width: auto;
+  overflow: hidden; /* Oculta el desbordamiento de la imagen */
+  transition: background-color 0.3s ease; /* Agrega una transición suave */
+}
+.bg-custom-colors-modal-success:hover {
+  background-color: #ab1f2c;
+}
+
+
+/* Estilo para el botón */
+.bg-custom-colors-modal-cancel:hover {
+  background-color: #d8973c;
+}
+
+.bg-custom-colors-modal-cancel {
+  position: relative; /* Agrega posición relativa para que el posicionamiento absoluto funcione correctamente */
+  background-color: #ab1f2c;
+  border-radius: 50px;
+  border: #d8973c;
+  height: auto;
+  width: auto;
+  overflow: hidden; /* Oculta el desbordamiento de la imagen */
+  transition: background-color 0.3s ease; /* Agrega una transición suave */
+}

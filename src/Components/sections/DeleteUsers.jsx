@@ -1,6 +1,7 @@
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import Swal from "sweetalert2";
+import "../sections/users.css";
 
 const DeleteUsers = ({ id, getUsers, role }) => {
   const API = import.meta.env.VITE_API;
@@ -46,9 +47,9 @@ const DeleteUsers = ({ id, getUsers, role }) => {
   };
 
   return (
-    <Button type="button" variant="danger" onClick={handleDelete}>
+    <button type="button" variant="" className="m-2 bg-custom-colors-modal-cancel colors-button-text" onClick={handleDelete}>
       Eliminar
-    </Button>
+    </button>
   );
 };
 
