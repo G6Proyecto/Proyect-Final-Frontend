@@ -25,7 +25,7 @@ const DeleteUsers = ({ id, getUsers, role }) => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            await axios.delete(`${API}/usersAdmin/${id}`);
+            await axios.delete(`${API}/users/delete/${id}`);
             getUsers();
             Swal.fire({
               title: "Éxito",
