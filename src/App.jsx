@@ -36,7 +36,7 @@ function App() {
     const session=GetAuth();
     if (session) {
       setCurrentUser(session)
-    };
+    }
     return ()=>{
       setCurrentUser(undefined);
     };
@@ -71,13 +71,11 @@ function App() {
             
             <Route path="/productDetail/:id" element={<AboutProduct />} />
             <Route path="/*" element={<Error404 />} />
-              {currentUser !== undefined &&
-                currentUser.role === "Administrador" && (
-                  <><Route path="/Admin" element={<Admin />}/>
+
+                  <Route path="/Admin" element={<Admin />}/>
                   <Route path="/CreateProducts" element={<CreateProducts/>}/>
                   <Route path="/ListUsers" element={<ListUsers/>} />
-                  </>
-                )}
+
           </Routes>
         </main>
         <footer>
