@@ -36,7 +36,7 @@ function App() {
     const session=GetAuth();
     if (session) {
       setCurrentUser(session)
-    };
+    }
     return ()=>{
       setCurrentUser(undefined);
     };

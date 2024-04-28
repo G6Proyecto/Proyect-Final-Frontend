@@ -7,8 +7,8 @@ const Admin = () => {
   const navigate=useNavigate();
   return (
     <div>
-      <div>
-        <h1>Aministración</h1>
+      <div className="text-center align-content-center">
+        <h1>Administración</h1>
       </div>
       <div className="container my-3 py-3">
         <Button
@@ -17,7 +17,7 @@ const Admin = () => {
             navigate("/CreateProducts");
           }}
         >
-         Crear Producto
+         Cargar un Producto
         </Button>
        
       </div>
