@@ -22,7 +22,7 @@ const TableProducts = () => {
 
   const getProducts = async () => {
     try {
-      const response = await axios.get(`${API}/collectionProducts`);
+      const response = await axios.get(`${API}/products`);
       setCollectionProducts(response.data);
     } catch (error) {
       console.log("Error para obtener los productos", error);
@@ -69,7 +69,7 @@ const TableProducts = () => {
               return (
                 <RowProducts
                   product={element}
-                  key={element.id}
+                  key={element._id}
                   handleShow={handleShow}
                   getProducts={getProducts}
                 ></RowProducts>
