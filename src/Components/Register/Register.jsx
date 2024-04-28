@@ -15,7 +15,7 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
     console.log(values);
     setIsLoadingRegis(true);
     try {
-      const response = await axios.post(`${API}/regis`, values);
+      const response = await axios.post(`${API}/users`, values);
       console.log(response);
       if (response.status === 201) {
         console.log("Values-->", values);

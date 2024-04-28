@@ -10,7 +10,8 @@ import Home from "./Components/Pages/Home";
 import UserContext from "./Context/UserContext";
 import { useEffect, useState } from "react";
 import CreateProducts from "./Components/Sections/AdminProducts/CreateProducts"
-//import axios from "axios";
+import ListUsers from "./Components/Sections/ListUsers"
+import axios from "axios";
 
 
 
@@ -42,17 +43,17 @@ function App() {
   },[]);
 
   //se va a encargar de manejar pura y exclusivamente la instancia de axios escuchando constantemente currentUser
-  // useEffect(()=>{
+   useEffect(()=>{
 
-  //   if (currentUser!==undefined) {
-  //     //configuramos axios
-  //     axios.defaults.headers.common["Authorization"]=`Bearer ${currentUser.token}`;
-  //   }else{
-  //     //quitamos la configuración del header de axios
-  //     delete axios.defaults.headers.common["Authorization"];
-  //   }
+     if (currentUser!==undefined) {
+       //configuramos axios
+       axios.defaults.headers.common["Authorization"]=`Bearer ${currentUser.token}`;
+     }else{
+       //quitamos la configuración del header de axios
+       delete axios.defaults.headers.common["Authorization"];
+     }
 
-  // },[currentUser]);
+   },[currentUser]);
 
   return (
     <>
@@ -74,6 +75,7 @@ function App() {
                 currentUser.role === "Administrador" && (
                   <><Route path="/Admin" element={<Admin />}/>
                   <Route path="/CreateProducts" element={<CreateProducts/>}/>
+                  <Route path="/ListUsers" element={<ListUsers/>} />
                   </>
                 )}
           </Routes>
