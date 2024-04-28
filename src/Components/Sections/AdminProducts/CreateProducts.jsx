@@ -22,13 +22,13 @@ const CreateProducts = () => {
       .required("Se requiere selección de categoría"),
     price: Yup.number()
       .min(100, "El precio mínimo es de 100")
-      .max(10000, "Máximo 8 caracteres")
-      .required("El precio mínimo es de 100"),
+      .max(10000, "El precio máximo es de 10000")
+      .required("El precio es requerido"),
     description: Yup.string()
-      .min(4, "Mínimo 5 caracteres")
-      .max(500, "Máximo 200 caracteres")
+      .min(4, "Mínimo 4 caracteres")
+      .max(500, "Máximo 500 caracteres")
       .required("Se requiere breve información del producto"),
-    dateStock: Yup.date(),
+    dateStock: Yup.date().required(),
     url: Yup.string()
       .url("La URL de la imagen no es válida")
       .required("Se requiere imagen descriptiva del producto")
