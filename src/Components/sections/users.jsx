@@ -2,8 +2,8 @@ import axios from "axios";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import DeleteUsers from "../sections/DeleteUsers";
-import EditUsers from "../sections/EditUsers"; // Importa el componente EditUsers
+import DeleteUsers from "../Sections/DeleteUsers";
+//import EditUsers from "../sections/EditUsers"; // Importa el componente EditUsers
 
 const Users = ({ user, getUsers, handleShow }) => {
   const navigate = useNavigate();
