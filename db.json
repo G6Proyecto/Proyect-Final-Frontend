@@ -1,5 +1,5 @@
 {
-  "users/login": [
+  "usersAdmin": [
     {
       "id": "1",
       "name": "José",
@@ -8,21 +8,34 @@
       "role": "Administrador"
     },
     {
-      "id": "1",
+      "id": "2",
       "name": "Marcos",
       "email": "noadmin@noadmin.com",
       "password": "Password!123",
       "role": "cliente"
     }
   ],
-  "users/regis": []
-}
-
+  "regis": [
+    {
+      "id": "1da9",
+      "email": "admin@gmail.com",
+      "password": "asdasda",
+      "confirmPassword": "asdasda",
+      "role": "Administrador"
+    },
+    {
+      "id": "9f25",
+      "email": "admin@gmail.com",
+      "password": "asdasda",
+      "confirmPassword": "asdasda",
+      "role": "Administrador"
+    }
+  ],
   "collectionProducts": [
     {
       "title": "Hambuerguesa simple",
       "category": "Hamburguesas",
-      "price": "xaxaxax",
+      "price": "6000",
       "description": "asdasd",
       "dateStock": "2024-04-11",
       "url": "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg",
@@ -36,7 +49,15 @@
       "dateStock": "2024-04-11",
       "url": "https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg",
       "id": "4bcf"
+    },
+    {
+      "id": "c78c",
+      "title": "Burger Crispy Chicken",
+      "category": "Hamburguesas",
+      "price": "8000",
+      "description": "asdonsoasdasd",
+      "dateStock": "2024-04-25",
+      "url": "https://s3-eu-central-1.amazonaws.com/www.burgerking.com.ar.v2/wp-media-folder-burger-king-argentina//home/ubuntu/preview/menu-app/frontend/apps/marketing-website-wordpress-app/web/app/uploads/sites/5/Crispy-Chicken.png"
     }
   ]
 }
-

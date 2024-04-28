@@ -43,7 +43,7 @@ const RowProducts = ({ product, handleShow, getProducts }) => {
         <td>{product.description}</td>
         <td>{product.dateStock}</td>
         <td>{product.url}</td>
-        <td className="d-flex justify-content-around">
+        <td className="d-flex justify-content-center gap-2 p-4">
           <Button
             type="button"
             variant="success"

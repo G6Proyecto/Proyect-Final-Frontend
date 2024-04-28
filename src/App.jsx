@@ -1,4 +1,3 @@
-import CreateProducts from "./Components/Sections/AdminProducts/CreateProducts";
 import NavBar from "./Components/Navbar/NavBar";
 import Socials from "./Components/Navbar/Socials";
 import Footer from "./Components/Footer/Footer";
@@ -8,10 +7,12 @@ import Error404 from "./Components/Pages/Error404";
 import Contact from "./Components/Pages/Contact";
 import AboutProduct from "./Components/Pages/product/about-product/aboutProduct"
 import Home from "./Components/Pages/Home";
-import ListUsers from "./Components/sections/ListUsers";
 import UserContext from "./Context/UserContext";
 import { useEffect, useState } from "react";
+import CreateProducts from "./Components/Sections/AdminProducts/CreateProducts"
+import ListUsers from "./Components/Sections/ListUsers"
 import axios from "axios";
+
 
 
 
@@ -35,24 +36,24 @@ function App() {
     const session=GetAuth();
     if (session) {
       setCurrentUser(session)
-    };
+    }
     return ()=>{
       setCurrentUser(undefined);
     };
   },[]);
 
   //se va a encargar de manejar pura y exclusivamente la instancia de axios escuchando constantemente currentUser
-  useEffect(()=>{
+   useEffect(()=>{
 
-    if (currentUser!==undefined) {
-      //configuramos axios
-      axios.defaults.headers.common["Authorization"]=`Bearer ${currentUser.token}`;
-    }else{
-      //quitamos la configuración del header de axios
-      delete axios.defaults.headers.common["Authorization"];
-    }
+     if (currentUser!==undefined) {
+       //configuramos axios
+       axios.defaults.headers.common["Authorization"]=`Bearer ${currentUser.token}`;
+     }else{
+       //quitamos la configuración del header de axios
+       delete axios.defaults.headers.common["Authorization"];
+     }
 
-  },[currentUser]);
+   },[currentUser]);
 
   return (
     <>
@@ -67,15 +68,14 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/contact" element={<Contact/>} />
             <Route path="/error" element={<Error404/>} />
-            <Route path="/Admin" element={<Admin/>} />
-            <Route path="/listUsers" element={<ListUsers/>} />
-            <Route path="/CreateProducts" element={<CreateProducts/>}></Route>
+            
             <Route path="/productDetail/:id" element={<AboutProduct />} />
             <Route path="/*" element={<Error404 />} />
-              {currentUser !== undefined &&
-                currentUser.role === "Administrador" && (
-                  <Route path="/admin" element={<Admin />} />
-                )}
+
+                  <Route path="/Admin" element={<Admin />}/>
+                  <Route path="/CreateProducts" element={<CreateProducts/>}/>
+                  <Route path="/ListUsers" element={<ListUsers/>} />
+
           </Routes>
         </main>
         <footer>
