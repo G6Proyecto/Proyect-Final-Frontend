@@ -7,7 +7,6 @@ import { useFormik } from "formik";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-
 const EditUser = ({ user, getUsers, show, handleClose }) => {
   const API = import.meta.env.VITE_API;
   
@@ -118,3 +117,4 @@ const EditUser = ({ user, getUsers, show, handleClose }) => {
 };
 
 export default EditUser;
+
