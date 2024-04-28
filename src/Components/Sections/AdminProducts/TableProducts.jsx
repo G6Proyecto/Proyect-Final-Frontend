@@ -6,7 +6,7 @@ import axios from "axios";
 
 const TableProducts = () => {
   const API = import.meta.env.VITE_API;
-  const [collectionProducts, setCollectionProducts] = useState([]);
+  const [products, setproducts] = useState([]);
   const [show, setShow] = useState(false);
   const [productEdit, setProductEdit] = useState(undefined);
 
@@ -22,8 +22,8 @@ const TableProducts = () => {
 
   const getProducts = async () => {
     try {
-      const response = await axios.get(`${API}/collectionProducts`);
-      setCollectionProducts(response.data);
+      const response = await axios.get(`${API}/products`);
+      setproducts(response.data);
     } catch (error) {
       console.log("Error para obtener los productos", error);
     }
@@ -32,7 +32,7 @@ const TableProducts = () => {
   useEffect(() => {
     getProducts();
     return () => {
-      setCollectionProducts([]);
+      setproducts([]);
     };
   }, []);
 
@@ -42,34 +42,34 @@ const TableProducts = () => {
         <EditeProducts
           show={show}
           handleClose={handleClose}
-          collectionProducts={collectionProducts}
+          products={products}
           product={productEdit}
           getProducts={getProducts}
         ></EditeProducts>
       </div>
-      <div>
+      <div className="text-center align-content-center">
         <h2>Tabla de Productos</h2>
       </div>
       <div>
         <Table responsive striped bordered hover variant="dark">
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Título</th>
-              <th>Categoría</th>
-              <th>Precio</th>
-              <th>Descripción</th>
-              <th>Fecha último control de stock</th>
-              <th>URL imagen del producto</th>
-              <th>Acciones</th>
+              <th className="text-center align-content-center">Id</th>
+              <th className="text-center align-content-center">Título</th>
+              <th className="text-center align-content-center">Categoría</th>
+              <th className="text-center align-content-center">Precio</th>
+              <th className="text-center align-content-center">Descripción</th>
+              <th className="text-center align-content-center">Fecha último control de stock</th>
+              <th className="text-center align-content-center">Imagen del producto</th>
+              <th className="text-center align-content-center">Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {collectionProducts.map((element) => {
+            {products.map((element, index) => {
               return (
                 <RowProducts
                   product={element}
-                  key={element.id}
+                  key={index}
                   handleShow={handleShow}
                   getProducts={getProducts}
                 ></RowProducts>

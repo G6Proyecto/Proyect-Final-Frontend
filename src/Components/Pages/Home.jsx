@@ -15,7 +15,7 @@ const Home = () => {
 
   const getProducts = async ()=>{
     try {
-        const response =await axios.get(`${API}/collectionProducts`)
+        const response =await axios.get(`${API}/products`)
         setProducts(response.data);
     } catch (error) {
       console.log("Error en get axios---->", error);

@@ -8,40 +8,43 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const CreateProducts = () => {
+
   const API = import.meta.env.VITE_API;
 
   const navigate = useNavigate();
 
-  console.log("api", API);
-
   const ProductSchema = Yup.object().shape({
     title: Yup.string()
       .min(3, "Mínimo 3 caracteres")
-      .max(30, "Máximo 30 caracteres")
+      .max(80, "Máximo 80 caracteres")
       .required("Se requiere nombre del producto"),
-    category: Yup.string().required("Se requiere selección de categoría"),
-    price: Yup.string()
-      .min(1, "Mínimo 1 caracter")
-      .max(8, "Máximo 8 caracteres")
-      .required("Se requiere ingresar precio"),
+    category: Yup.string()
+      .required("Se requiere selección de categoría"),
+    price: Yup.number()
+      .min(100, "El precio mínimo es de 100")
+      .max(10000, "Máximo 8 caracteres")
+      .required("El precio mínimo es de 100"),
     description: Yup.string()
-      .min(5, "Mínimo 5 caracteres")
-      .max(200, "Máximo 200 caracteres")
+      .min(4, "Mínimo 5 caracteres")
+      .max(500, "Máximo 200 caracteres")
       .required("Se requiere breve información del producto"),
-    dateStock: Yup.date().required(
-      "La fecha del último control del stock es requerida"
-    ),
+    dateStock: Yup.date(),
     url: Yup.string()
+      .url("La URL de la imagen no es válida")
       .required("Se requiere imagen descriptiva del producto")
-      .url("La URL de la imagen no es válida"),
   });
+
+  const getCurrentDate = () => {
+    const currentDate = new Date().toISOString().split("T")[0];
+    return currentDate;
+  };
 
   const initialValues = {
     title: "",
     category: "",
     price: "",
     description: "",
-    dateStock: "",
+    dateStock: getCurrentDate(),
     url: "",
   };
 
@@ -62,12 +65,7 @@ const CreateProducts = () => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            // const response = await axios.post(
-            //   `${API}/products`,
-            //   values
-            // );
-
-            const response = await fetch(`${API}/collectionProducts`, {
+            const response = await fetch(`${API}/products`, {
               method: "POST",
               headers: { "content-Type": "application/json" },
               body: JSON.stringify(values),
@@ -100,11 +98,9 @@ const CreateProducts = () => {
       >
         Atrás
       </Button>
-      <h3 className="p-3">Crear nuevo producto</h3>
+      <h3 className="p-3">Cargar nuevo producto</h3>
       <div className="row">
-        {/* Primera columna */}
         <div className="col-lg-6 col-12 mx-auto my-4 rounded border border-3 p-2 shadow">
-          {/*Se inicia el formulario  */}
           <Form onSubmit={formik.handleSubmit}>
             <Form.Group controlId="title">
               <Form.Label className="text-start p-1">Título</Form.Label>
@@ -113,7 +109,6 @@ const CreateProducts = () => {
                 maxLength={30}
                 minLength={3}
                 placeholder="Ingrese aquí el nombre del producto"
-                //Inicio validacion con formik
                 name="title"
                 {...formik.getFieldProps("title")}
                 className={clsx(
@@ -132,8 +127,6 @@ const CreateProducts = () => {
                 </div>
               )}
             </Form.Group>
-
-            {/* Categoria */}
 
             <Form.Group controlId="category">
               <Form.Label>Categoría</Form.Label>
@@ -166,15 +159,11 @@ const CreateProducts = () => {
               )}
             </Form.Group>
 
-            {/* Precio */}
-
             <Form.Group className="p-1" controlId="price">
               <Form.Label>Precio</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="Ingrese el precio del producto"
-                maxLength={8}
-                minLength={1}
                 name="price"
                 {...formik.getFieldProps("price")}
                 className={clsx(
@@ -194,15 +183,14 @@ const CreateProducts = () => {
               )}
             </Form.Group>
 
-            {/* Descripcion */}
             <Form.Group className="p-1" controlId="description">
               <Form.Label>Descripción</Form.Label>
               <Form.Control
                 as="textarea"
                 placeholder="Ingrese la información general del producto"
                 rows={3}
-                maxLength={200}
-                minLength={10}
+                maxLength={500}
+                minLength={4}
                 name="description"
                 {...formik.getFieldProps("description")}
                 className={clsx(
@@ -224,40 +212,24 @@ const CreateProducts = () => {
               )}
             </Form.Group>
 
-            {/* Fecha ultimo stock */}
             <Form.Group className="mb-3" controlId="dateStock">
               <Form.Label>Fecha último control de stock</Form.Label>
               <Form.Control
                 type="date"
-                placeholder="Ingrese la fecha del último control de stock"
                 name="dateStock"
-                {...formik.getFieldProps("dateStock")}
-                className={clsx(
-                  "form-control",
-                  {
-                    "is-invalid":
-                      formik.touched.dateStock && formik.errors.dateStock,
-                  },
-                  {
-                    "is-valid":
-                      formik.touched.dateStock && !formik.errors.dateStock,
-                  }
-                )}
+                value={formik.values.dateStock}
+                onChange={formik.handleChange}
               />
-              {formik.touched.dateStock && formik.errors.dateStock && (
-                <div className="mt-2 text-danger fw-bolder">
-                  <span role="alert">{formik.errors.dateStock}</span>
-                </div>
-              )}
             </Form.Group>
 
-            {/* URL */}
             <Form.Group className="p-1" controlId="url">
-              <Form.Label>URL imágen del producto</Form.Label>
+              <Form.Label>URL de la imagen del producto</Form.Label>
               <Form.Control
                 type="text"
-                rows={3}
                 name="url"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.url}
                 {...formik.getFieldProps("url")}
                 className={clsx(
                   "form-control",
@@ -275,13 +247,13 @@ const CreateProducts = () => {
                 </div>
               )}
             </Form.Group>
+
             <Button variant="danger" type="submit">
               Guardar
             </Button>
           </Form>
         </div>
 
-        {/* Segunda columna */}
         <div className="col-lg-6 col-12 d-flex align-items-start justify-content-center mx-auto my-4">
           <img
             className="img-fluid w-100 h-75 rounded border border-3"

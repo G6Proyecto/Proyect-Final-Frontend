@@ -15,7 +15,7 @@ const aboutProduct = () => {
 
   const getProduct = async()=>{
     try {
-        const {data}= await axios.get(`${API}/collectionProducts/${id}`);
+        const {data}= await axios.get(`${API}/products/${id}`);
         setProduct(data);
     } catch (error) {
         console.log("Error--->", error);
