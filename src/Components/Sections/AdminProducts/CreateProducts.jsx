@@ -67,7 +67,7 @@ const CreateProducts = () => {
             //   values
             // );
 
-            const response = await fetch(`${API}/collectionProducts`, {
+            const response = await fetch(`${API}/products`, {
               method: "POST",
               headers: { "content-Type": "application/json" },
               body: JSON.stringify(values),
