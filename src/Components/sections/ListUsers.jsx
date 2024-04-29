@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Table, Form, Row, Col } from "react-bootstrap";
+import { Table} from "react-bootstrap";
 import Users from "../Sections/users.jsx"
 import  axios  from "axios";
 import EditUser from "../Sections/EditUsers.jsx";
@@ -60,7 +60,6 @@ const ListUsers = () => {
                 <th>Email</th>
                 <th>Rol</th>
                 <th>Acciones</th>
-                
               </tr>
             </thead>
             <tbody className="">

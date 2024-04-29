@@ -6,6 +6,8 @@ import Admin from "./Components/Pages/Admin";
 import Error404 from "./Components/Pages/Error404";
 import Contact from "./Components/Pages/Contact";
 import AboutProduct from "./Components/Pages/product/about-product/aboutProduct"
+import GaleryProduct from "./Components/Pages/product/GaleryProduct"
+import FeatureProducts from "./Components/Pages/product/FeaturesProduct"
 import Home from "./Components/Pages/Home";
 import UserContext from "./Context/UserContext";
 import { useEffect, useState } from "react";
@@ -68,14 +70,18 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/contact" element={<Contact/>} />
             <Route path="/error" element={<Error404/>} />
-            
-            <Route path="/productDetail/:id" element={<AboutProduct />} />
+            <Route path="/galery" element={<GaleryProduct/>}/>
+            <Route path="/productDetail/:id" element={<AboutProduct />}/>
             <Route path="/*" element={<Error404 />} />
-
-                  <Route path="/Admin" element={<Admin />}/>
+            <Route path="/GaleryProduct" element={<GaleryProduct/>}/>
+            <Route path="/featureProduct" element={<FeatureProducts/>}/>
+                {currentUser !== undefined &&
+                  currentUser.role === "Administrador" && (
+                  <><Route path="/Admin" element={<Admin />}/>
                   <Route path="/CreateProducts" element={<CreateProducts/>}/>
                   <Route path="/ListUsers" element={<ListUsers/>} />
-
+                  </>
+                )}
           </Routes>
         </main>
         <footer>
