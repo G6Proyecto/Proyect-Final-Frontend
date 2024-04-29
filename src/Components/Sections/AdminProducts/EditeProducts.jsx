@@ -9,7 +9,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const ModalEditar = ({ show, handleClose, product, getProducts }) => {
-  //para editar y modificar el campo
+  const API = import.meta.env.VITE_API;
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (product) {
       formik.setFieldValue("title", product.title, true);
@@ -21,39 +23,37 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
     }
   }, [product]);
 
-  const API = import.meta.env.VITE_API;
-  console.log("api", API);
-
-  const navigate = useNavigate();
-
   const ProductSchema = Yup.object().shape({
     title: Yup.string()
       .min(3, "Mínimo 3 caracteres")
-      .max(30, "Máximo 30 caracteres")
+      .max(80, "Máximo 80 caracteres")
       .required("Se requiere nombre del producto"),
     category: Yup.string().required("Se requiere selección de categoría"),
-    price: Yup.string()
-      .min(1, "Mínimo 1 caracter")
-      .max(8, "Máximo 8 caracteres")
-      .required("Se requiere ingresar precio"),
+    price: Yup.number()
+      .min(100, "El precio mínimo es de 100")
+      .max(10000, "Máximo 8 caracteres")
+      .required("El precio mínimo es de 100"),
     description: Yup.string()
-      .min(5, "Mínimo 5 caracteres")
-      .max(200, "Máximo 200 caracteres")
+      .min(4, "Mínimo 5 caracteres")
+      .max(500, "Máximo 200 caracteres")
       .required("Se requiere breve información del producto"),
-    dateStock: Yup.date().required(
-      "La fecha del último control del stock es requerida"
-    ),
+    dateStock: Yup.date(),
     url: Yup.string()
       .required("Se requiere imagen descriptiva del producto")
-      .url("La URL de la imagen no es válida"),
+      .url("La URL de la imagen no es válida")
   });
+
+  const getCurrentDate = () => {
+    const currentDate = new Date().toISOString().split("T")[0];
+    return currentDate;
+  };
 
   const initialValues = {
     title: "",
     category: "",
     price: "",
     description: "",
-    dateStock: "",
+    dateStock: getCurrentDate(),
     url: "",
   };
 
@@ -63,27 +63,26 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
     validationOnBlur: true,
     validateOnChange: true,
     onSubmit: (values) => {
-      console.log("values", values);
       Swal.fire({
-        title: "Está seguro que quiere modificar el producto",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sí, modificar",
-      cancelButtonText: "No, no deseo eliminar",
+        title: "Estás seguro de modificar el producto",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí",
+        cancelButtonText: "No, volver atrás",
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
             const response = await axios.put(
-              `${API}/collectionProducts/${product.id}`,
+              `${API}/products/update/${product._id}`,
               values
             );
 
-            if (response.status === 200) {
+            if (response.status === 201) {
               Swal.fire({
                 title: "Exito!",
-                text: "se edito el producto",
+                text: "Se actualizó el producto exitosamente",
                 icon: "success",
               });
               navigate("/Admin");
@@ -118,7 +117,6 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
                 maxLength={30}
                 minLength={3}
                 placeholder="Ingrese aquí el nombre del producto"
-                //Inicio validacion con formik
                 name="title"
                 {...formik.getFieldProps("title")}
                 className={clsx(
@@ -138,7 +136,31 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
               )}
             </Form.Group>
 
-            {/* Categoria */}
+            <Form.Group controlId="title">
+              <Form.Label className="text-start p-1">Título</Form.Label>
+              <Form.Control
+                type="text"
+                maxLength={30}
+                minLength={3}
+                placeholder="Ingrese aquí el nombre del producto"
+                name="title"
+                {...formik.getFieldProps("title")}
+                className={clsx(
+                  "form-control",
+                  {
+                    "is-invalid": formik.touched.title && formik.errors.title,
+                  },
+                  {
+                    "is-valid": formik.touched.title && !formik.errors.title,
+                  }
+                )}
+              />
+              {formik.touched.title && formik.errors.title && (
+                <div className="mt-2 text-danger fw-bolder">
+                  <span role="alert">{formik.errors.title}</span>
+                </div>
+              )}
+            </Form.Group>
 
             <Form.Group controlId="category">
               <Form.Label>Categoría</Form.Label>
@@ -171,15 +193,11 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
               )}
             </Form.Group>
 
-            {/* Precio */}
-
             <Form.Group className="p-1" controlId="price">
               <Form.Label>Precio</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 placeholder="Ingrese el precio del producto"
-                maxLength={8}
-                minLength={1}
                 name="price"
                 {...formik.getFieldProps("price")}
                 className={clsx(
@@ -199,15 +217,14 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
               )}
             </Form.Group>
 
-            {/* Descripcion */}
             <Form.Group className="p-1" controlId="description">
               <Form.Label>Descripción</Form.Label>
               <Form.Control
                 as="textarea"
                 placeholder="Ingrese la información general del producto"
                 rows={3}
-                maxLength={200}
-                minLength={10}
+                maxLength={500}
+                minLength={4}
                 name="description"
                 {...formik.getFieldProps("description")}
                 className={clsx(
@@ -229,40 +246,25 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
               )}
             </Form.Group>
 
-            {/* Fecha ultimo stock */}
             <Form.Group className="mb-3" controlId="dateStock">
               <Form.Label>Fecha último control de stock</Form.Label>
               <Form.Control
                 type="date"
                 placeholder="Ingrese la fecha del último control de stock"
                 name="dateStock"
-                {...formik.getFieldProps("dateStock")}
-                className={clsx(
-                  "form-control",
-                  {
-                    "is-invalid":
-                      formik.touched.dateStock && formik.errors.dateStock,
-                  },
-                  {
-                    "is-valid":
-                      formik.touched.dateStock && !formik.errors.dateStock,
-                  }
-                )}
+                value={formik.values.dateStock}
+                onChange={formik.handleChange}
               />
-              {formik.touched.dateStock && formik.errors.dateStock && (
-                <div className="mt-2 text-danger fw-bolder">
-                  <span role="alert">{formik.errors.dateStock}</span>
-                </div>
-              )}
             </Form.Group>
 
-            {/* URL */}
             <Form.Group className="p-1" controlId="url">
-              <Form.Label>URL imágen del producto</Form.Label>
+              <Form.Label>URL de la imagen del producto</Form.Label>
               <Form.Control
                 type="text"
-                rows={3}
                 name="url"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.url}
                 {...formik.getFieldProps("url")}
                 className={clsx(
                   "form-control",
@@ -288,7 +290,7 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
               variant="danger"
               className="mx-2"
               onClick={() => {
-                formik.resetForm()
+                formik.resetForm();
                 closeHand();
               }}
             >
@@ -302,17 +304,3 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
 };
 
 export default ModalEditar;
-
-// const EditeProducts = ({show, handleClose, product, getProduct}) => {
-//     const navigate=useNavigate();
-//     const API=import.meta.env.VITE_API;
-//     useEffect()
-
-//     return (
-//         <div>
-
-//         </div>
-//     );
-// };
-
-// export default EditeProducts;
