@@ -10,7 +10,7 @@ const aboutProduct = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const {id} = useParams();
 
-  const API = import.meta.env.VITE_API;
+  const API = import.meta.env.VITE_API_BCK;
   // eslint-disable-next-line react-hooks/rules-of-hooks
 
   const getProduct = async()=>{
