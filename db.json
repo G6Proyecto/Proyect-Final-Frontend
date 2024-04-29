@@ -31,7 +31,7 @@
       "role": "Administrador"
     }
   ],
-  "collectionProducts": [
+  "products": [
     {
       "title": "Hambuerguesa simple",
       "category": "Hamburguesas",
