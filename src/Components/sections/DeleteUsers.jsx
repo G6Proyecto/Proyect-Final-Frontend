@@ -2,10 +2,10 @@
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import Swal from "sweetalert2";
-import "../sections/users.css";
+import "../Sections/users.css";
 
 const DeleteUsers = ({ id, getUsers, role }) => {
-  const API = import.meta.env.VITE_API;
+  const API = import.meta.env.VITE_API_BCK;
   
   const handleDelete = async () => {
     if (role === "Administrador") {
@@ -27,13 +27,14 @@ const DeleteUsers = ({ id, getUsers, role }) => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            await axios.delete(`${API}/usersAdmin/${id}`);
-            getUsers();
+            await axios.delete(`${API}/users/delete/${id}`);
+            
             Swal.fire({
               title: "Éxito",
               text: "El usuario ha sido eliminado",
               icon: "success",
             });
+            getUsers()
           } catch (error) {
             console.log("ERROR-->", error);
             Swal.fire({
@@ -48,7 +49,7 @@ const DeleteUsers = ({ id, getUsers, role }) => {
   };
 
   return (
-    <button type="button" variant="" className="m-2 bg-custom-colors-modal-cancel colors-button-text" onClick={handleDelete}>
+    <button type="button" variant="" className="mx-2 btn-delete" onClick={handleDelete}>
       Eliminar
     </button>
   );

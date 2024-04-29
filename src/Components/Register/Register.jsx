@@ -7,7 +7,7 @@ import { Button, Modal, Form } from "react-bootstrap";
 import UserContext from "../../Context/UserContext";
 
 const Register = ({ isOpenRegis, handleCloseRegis }) => {
-  const API = import.meta.env.VITE_API;
+  const API = import.meta.env.VITE_API_BCK;
   const { setCurrentUser, SaveAuth } = useContext(UserContext);
   const [isLoadingRegis, setIsLoadingRegis] = useState(false);
 

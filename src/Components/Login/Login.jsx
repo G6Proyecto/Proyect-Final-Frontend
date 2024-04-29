@@ -10,7 +10,7 @@ import UserContext from "../../Context/UserContext";
 
 
 const Login = ({ isOpen, handleClose }) => {
-  const API = import.meta.env.VITE_API;
+  const API = import.meta.env.VITE_API_BCK;
   const { setCurrentUser, SaveAuth } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -60,7 +60,7 @@ const Login = ({ isOpen, handleClose }) => {
         } else {
           setIsLoading(false);
           Swal.close(),
-          alert("Ocurrio un errorasdasd");
+          alert("Ocurrio un error");
         }
       } catch (error) {
         setIsLoading(false);

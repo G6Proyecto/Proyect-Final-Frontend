@@ -2,40 +2,56 @@
   }
 .colors-button-text {   color: #f4f3ef; /* Color mostaza en formato hexadecimal */
 }
-
-
-.bg-custom-colors-modal-cancel:hover {
-  background-color: #d8973c;
+.btn-custom-users {
+  font-size: 15px;
+  font-weight: bold;
+  background: var(--secondary);
+  width: 160px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 15px;
+  border: var(--fifth) 2px solid;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
 }
 
-
-.bg-custom-colors-modal-success {
-  position: relative; /* Agrega posición relativa para que el posicionamiento absoluto funcione correctamente */
-  background-color: #d8973c;
-  border-radius: 50px;
-  border: #ab1f2c;
-  height: autopx;
-  width: auto;
-  overflow: hidden; /* Oculta el desbordamiento de la imagen */
-  transition: background-color 0.3s ease; /* Agrega una transición suave */
-}
-.bg-custom-colors-modal-success:hover {
-  background-color: #ab1f2c;
+.btn-custom-users:hover,
+.btn-custom-users:active {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
-
-/* Estilo para el botón */
-.bg-custom-colors-modal-cancel:hover {
-  background-color: #d8973c;
+.btn-delete {
+  font-size: 15px;
+  font-weight: bold;
+  background: var(--primary);
+  width: 160px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 15px;
+  border: var(--fifth) 2px solid;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
 }
 
-.bg-custom-colors-modal-cancel {
-  position: relative; /* Agrega posición relativa para que el posicionamiento absoluto funcione correctamente */
-  background-color: #ab1f2c;
-  border-radius: 50px;
-  border: #d8973c;
-  height: auto;
-  width: auto;
-  overflow: hidden; /* Oculta el desbordamiento de la imagen */
-  transition: background-color 0.3s ease; /* Agrega una transición suave */
+.btn-delete:hover,
+.btn-delete:active {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }

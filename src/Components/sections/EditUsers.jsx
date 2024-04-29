@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import "../sections/users.css"
+import "../Sections/users.css"
 import { Modal, Button, Form } from "react-bootstrap";
 import clsx from "clsx";
 import * as Yup from "yup";
@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 const EditUser = ({ user, getUsers, show, handleClose }) => {
-  const API = import.meta.env.VITE_API;
+  const API = import.meta.env.VITE_API_BCK;
   
   
 

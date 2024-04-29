@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Table, Form, Row, Col } from "react-bootstrap";
-import Users from "../sections/users"
+import Users from "../Sections/users"
 import  axios  from "axios";
-import EditUser from "./Sections/EditUsers";
+import EditUser from "./EditUsers";
 
 const ListUsers = () => {
   const [user, setUser] = useState([]);
@@ -21,11 +21,11 @@ const ListUsers = () => {
     setShow(true);
   };
 
-  const API_URL = import.meta.env.VITE_API;
+  const API_URL = import.meta.env.VITE_API_BCK;
 
   const getUsers = async () => {
     try {
-      let URL = `${API_URL}/usersAdmin`;
+      let URL = `${API_URL}/users/listuser`;
       const response = await axios.get(URL); // Realizar solicitud GET con Axios
       setUser(response.data); // Establecer los usuarios en el estado
     } catch (error) {
@@ -55,26 +55,27 @@ const ListUsers = () => {
           <Table striped bordered hover variant="">
             <thead>
               <tr className="">
-                <th className="text-center m-2">ID</th>
-                <th className="text-center m-2">Nombre</th>
+               {/* <th className="text-center m-2">ID</th>
+                <th className="text-center m-2">Nombre</th>*/}
                 <th className="text-center m-2">Email</th>
                 <th className="text-center m-2">Rol</th>
                 <th className="text-center m-2">Acciones</th>
                 
               </tr>
             </thead>
-            <tbody className="">
-              {user.map((users) => {
-                return (
+<tbody className="">
+  {user.map((users) => {
+    return (
+      <Users
+        user={users}
+        handleShow={handleShow}
+        getUsers={getUsers}
+        key={users._id}
+      />
+    );
+  })}
+</tbody>
 
-                <Users
-                  user={users}
-                  handleShow={handleShow}
-                  key={users.id}
-                  getUsers={getUsers}
-                />)
-}) }
-            </tbody>
           </Table>
         </div>
       </div>
