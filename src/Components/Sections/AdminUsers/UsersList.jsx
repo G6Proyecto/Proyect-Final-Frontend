@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Table, Button, Modal, Form } from 'react-bootstrap';
+import { Table, Modal, Form } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import "../users.css"
 const UsersList = () => {
@@ -103,9 +103,9 @@ const UsersList = () => {
               <td>{user.role}</td>
               <td className=''>
                 {user.role !== 'Administrador' && (
-                 <button variant=""  className="btn-custom-users mx-5" onClick={() => handleEdit(user)}>Editar</button>
+                 <button className="btn-custom-users mx-5" onClick={() => handleEdit(user)}>Editar</button>
                 )}
-                <button variant="" className="btn-delete mx-5 " onClick={() => handleDelete(user._id, user.role)}>Eliminar</button>
+                <button className="btn-delete mx-5 " onClick={() => handleDelete(user._id, user.role)}>Eliminar</button>
               </td>
             </tr>
           ))}
@@ -128,8 +128,8 @@ const UsersList = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <button variant="" className="btn-delete mx2" onClick={handleClose}>Cerrar</button>
-          <button variant="" className="btn-custom-users mx-2" onClick={handleClose}>Guardar</button>
+          <button className="btn-delete mx2" onClick={handleClose}>Cerrar</button>
+          <button className="btn-custom-users mx-2" onClick={handleClose}>Guardar</button>
         </Modal.Footer>
       </Modal>
     </>

@@ -23,9 +23,9 @@ const aboutProduct = () => {
 }
 // eslint-disable-next-line react-hooks/rules-of-hooks
 useEffect(()=>{
-  console.log("Valor del id seleccionado --->", id);
+
   getProduct()
-},[])
+},[id])
 /*
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const navigate = useNavigate()
