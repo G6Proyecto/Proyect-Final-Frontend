@@ -60,7 +60,7 @@ const Login = ({ isOpen, handleClose }) => {
         } else {
           setIsLoading(false);
           Swal.close(),
-          alert("Ocurrio un errorasdasd");
+          alert("Ocurrio un error");
         }
       } catch (error) {
         setIsLoading(false);
