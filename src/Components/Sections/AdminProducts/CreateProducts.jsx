@@ -55,7 +55,6 @@ const CreateProducts = () => {
     validationOnBlur: true,
     validateOnChange: true,
     onSubmit: (values) => {
-      console.log("values", values);
       Swal.fire({
         title: "Desea subir el producto",
         icon: "warning",

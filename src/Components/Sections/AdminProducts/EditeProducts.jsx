@@ -136,33 +136,7 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
               )}
             </Form.Group>
 
-            <Form.Group controlId="title">
-              <Form.Label className="text-start p-1">Título</Form.Label>
-              <Form.Control
-                type="text"
-                maxLength={30}
-                minLength={3}
-                placeholder="Ingrese aquí el nombre del producto"
-                name="title"
-                {...formik.getFieldProps("title")}
-                className={clsx(
-                  "form-control",
-                  {
-                    "is-invalid": formik.touched.title && formik.errors.title,
-                  },
-                  {
-                    "is-valid": formik.touched.title && !formik.errors.title,
-                  }
-                )}
-              />
-              {formik.touched.title && formik.errors.title && (
-                <div className="mt-2 text-danger fw-bolder">
-                  <span role="alert">{formik.errors.title}</span>
-                </div>
-              )}
-            </Form.Group>
-
-            <Form.Group controlId="category">
+             <Form.Group controlId="category">
               <Form.Label>Categoría</Form.Label>
               <Form.Select
                 aria-label="category"

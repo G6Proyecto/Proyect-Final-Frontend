@@ -13,13 +13,10 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
   const [isLoadingRegis, setIsLoadingRegis] = useState(false);
 
   const onSubmit = async (values) => {
-    console.log(values);
     setIsLoadingRegis(true);
     try {
       const response = await axios.post(`${API}/users`, values);
-      console.log(response);
       if (response.status === 201) {
-        console.log("Values-->", values);
         SaveAuth(response.data);
         setCurrentUser(response.data);
         formik.resetForm();
