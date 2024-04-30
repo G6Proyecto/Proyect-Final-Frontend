@@ -1,11 +1,12 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import productoImage from "./Img/img-adminProduc.webp";
+import productoImage from "./Img/image.png"
 import clsx from "clsx";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+
 
 const CreateProducts = () => {
 
@@ -90,13 +91,13 @@ const CreateProducts = () => {
 
   return (
     <div className="container-fluid">
-      <Button
-        variant="secondary"
+      <Button className="m-3"
+      variant="secondary"
         onClick={() => {
           navigate(-1);
         }}
       >
-        Atrás
+        ATRÁS
       </Button>
       <h3 className="p-3">Cargar nuevo producto</h3>
       <div className="row">
@@ -248,8 +249,8 @@ const CreateProducts = () => {
               )}
             </Form.Group>
 
-            <Button variant="danger" type="submit">
-              Guardar
+            <Button className="m-3 prod" type="submit">
+              GUARDAR
             </Button>
           </Form>
         </div>
