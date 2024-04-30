@@ -8,8 +8,6 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import UserContext from "../../Context/UserContext";
 
-
-
 const Login = ({ isOpen, handleClose }) => {
   const API = import.meta.env.VITE_API;
   const { setCurrentUser, SaveAuth } = useContext(UserContext);
@@ -40,11 +38,11 @@ const Login = ({ isOpen, handleClose }) => {
     onSubmit: async (values) => {
       setIsLoading(true);
       Swal.fire({
-        title:  "Iniciando sesión",
+        title: "Iniciando sesión",
         allowEscapeKey: false,
         allowOutsideClick: false,
         showConfirmButton: false,
-        willOpen: ()=>{
+        willOpen: () => {
           Swal.showLoading();
         },
       });
@@ -55,17 +53,14 @@ const Login = ({ isOpen, handleClose }) => {
           setCurrentUser(response.data);
           formik.resetForm();
           setIsLoading(false);
-          Swal.close(),
-          handleClose();
+          Swal.close(), handleClose();
         } else {
           setIsLoading(false);
-          Swal.close(),
-          alert("Ocurrio un error");
+          Swal.close(), alert("Ocurrio un error");
         }
       } catch (error) {
         setIsLoading(false);
-        Swal.close(),
-        alert(`${error.response.data.message}`);
+        Swal.close(), alert(`${error.response.data.message}`);
         console.error(error);
       }
     },
@@ -73,7 +68,12 @@ const Login = ({ isOpen, handleClose }) => {
 
   return (
     <>
-      <Modal show={isOpen} onHide={handleClose} >
+      <Modal
+        show={isOpen}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
         <Modal.Header closeButton className="bg-3rd">
           <Modal.Title>Ingresá</Modal.Title>
         </Modal.Header>
