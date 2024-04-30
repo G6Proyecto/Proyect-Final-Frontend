@@ -1,4 +1,4 @@
-import { Button, Modal, Form } from "react-bootstrap";
+import { Modal, Form } from "react-bootstrap";
 import "../Navbar/NavBar.css";
 import clsx from "clsx";
 import * as Yup from "yup";
@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { useContext, useState } from "react";
 import UserContext from "../../Context/UserContext";
+
 
 
 const Login = ({ isOpen, handleClose }) => {
@@ -73,11 +74,11 @@ const Login = ({ isOpen, handleClose }) => {
 
   return (
     <>
-      <Modal show={isOpen} onHide={handleClose} className="modal-bg">
-        <Modal.Header closeButton className="">
+      <Modal show={isOpen} onHide={handleClose} >
+        <Modal.Header closeButton className="bg-3rd">
           <Modal.Title>Ingresá</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="">
+        <Modal.Body className="navcolor rounded">
           <Form onSubmit={formik.handleSubmit}>
             <Form.Group className="mb-3" controlId="Email">
               <Form.Label>Email</Form.Label>
@@ -130,10 +131,10 @@ const Login = ({ isOpen, handleClose }) => {
             </Form.Group>
 
             <div>
-              <Button
+              <button
                 type="submit"
                 variant="primary"
-                className="mx-2 mb-2 sub-btn"
+                className="mx-2 mb-2 btn-in"
                 disabled={isLoading}
               >
                 {isLoading ? (
@@ -147,14 +148,14 @@ const Login = ({ isOpen, handleClose }) => {
                 ) : (
                   <>Ingresar</>
                 )}
-              </Button>
-              <Button
+              </button>
+              <button
                 variant="secondary"
                 onClick={handleClose}
-                className="mx-2 mb-2 sub-btn btn-danger"
+                className="mx-2 mb-2 btn-out"
               >
                 Cerrar
-              </Button>
+              </button>
             </div>
           </Form>
         </Modal.Body>

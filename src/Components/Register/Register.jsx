@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import clsx from "clsx";
-import { Button, Modal, Form } from "react-bootstrap";
+import {  Modal, Form } from "react-bootstrap";
 import UserContext from "../../Context/UserContext";
+
 
 const Register = ({ isOpenRegis, handleCloseRegis }) => {
   const API = import.meta.env.VITE_API;
@@ -65,10 +66,10 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
   return (
     <>
       <Modal show={isOpenRegis} onHide={handleCloseRegis}>
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className="bg-3rd">
           <Modal.Title>Registrarme</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="navcolor rounded">
           <Form onSubmit={formik.handleSubmit}>
             <Form.Group className="mb-3" controlId="Email">
               <Form.Label>Email</Form.Label>
@@ -144,10 +145,10 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
               )}
             </Form.Group>
             <div>
-              <Button
+              <button
                 variant="primary"
                 type="submit"
-                className="mx-2 mb-2 sub-btn"
+                className="mx-2 mb-2 btn-in"
                 disabled={isLoadingRegis}
               >
                 {isLoadingRegis ? (
@@ -161,14 +162,14 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
                 ) : (
                   <>Registrarme</>
                 )}
-              </Button>
-              <Button
+              </button>
+              <button
                 variant="secondary"
                 onClick={handleCloseRegis}
-                className="mx-2 mb-2 sub-btn btn-danger"
+                className="mx-2 mb-2 btn-out"
               >
                 Cerrar
-              </Button>
+              </button>
             </div>
           </Form>
         </Modal.Body>
