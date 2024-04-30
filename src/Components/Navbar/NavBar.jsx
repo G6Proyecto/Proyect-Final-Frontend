@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Form, InputGroup } from "react-bootstrap";
 import "./NavBar.css";
 import Login from "../Login/Login";
 import { useContext, useState } from "react";
 import UserContext from "../../Context/UserContext";
 import Register from "../Register/Register";
+import SearchBar from "../Sections/Search/SearchBar";
 
 const NavBar = () => {
   const { currentUser, setCurrentUser, RemoveAuth } = useContext(UserContext);
@@ -153,15 +153,7 @@ const NavBar = () => {
                     )}
                 </ul>
                 <div className="col d-lg-none">
-                  <InputGroup className="search-container mb-4  ">
-                    <InputGroup.Text id="search">
-                      <i className="bi bi-search cust-icon" role="button"></i>
-                    </InputGroup.Text>
-                    <Form.Control
-                      aria-describedby="search"
-                      placeholder="Buscar..."
-                    />
-                  </InputGroup>
+                  <SearchBar></SearchBar>
                 </div>
               </div>
               {/* <!--Login / Sign up  --> */}

@@ -10,7 +10,7 @@ const aboutProduct = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const {id} = useParams();
 
-  const API = import.meta.env.VITE_API_BCK;
+  const API = import.meta.env.VITE_API;
   // eslint-disable-next-line react-hooks/rules-of-hooks
 
   const getProduct = async()=>{
@@ -23,9 +23,9 @@ const aboutProduct = () => {
 }
 // eslint-disable-next-line react-hooks/rules-of-hooks
 useEffect(()=>{
-  console.log("Valor del id seleccionado --->", id);
+
   getProduct()
-},[])
+},[id])
 /*
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const navigate = useNavigate()

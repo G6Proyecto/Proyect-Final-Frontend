@@ -1,7 +1,8 @@
 import NewLogo from "..//logo/BecodeLogo.png";
 import { NavLink } from "react-router-dom";
-import { Form, InputGroup } from "react-bootstrap";
+
 import "./NavBar.css";
+import SearchBar from "../Sections/Search/SearchBar";
 
 const Socials = () => {
   return (
@@ -15,12 +16,7 @@ const Socials = () => {
             </NavLink>
           </div>
           <div className="col d-none d-lg-block">
-            <InputGroup className="search-container mb-4  ">
-              <InputGroup.Text id="search">
-                <i className="bi bi-search cust-icon" role="button"></i>
-              </InputGroup.Text>
-              <Form.Control aria-describedby="search" placeholder="Buscar..." />
-            </InputGroup>
+          <SearchBar></SearchBar>
           </div>
           <div className="col d-flex justify-content-center align-items-center text-center align- pt-4 pb-3 gap-4">
             <div className="facebook cust-socials">

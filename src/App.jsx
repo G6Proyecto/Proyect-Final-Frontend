@@ -12,7 +12,7 @@ import Home from "./Components/Pages/Home";
 import UserContext from "./Context/UserContext";
 import { useEffect, useState } from "react";
 import CreateProducts from "./Components/Sections/AdminProducts/CreateProducts"
-import ListUsers from "./Components/Sections/ListUsers"
+import ListUsers from "./Components/Sections/ListUsers/ListUser"
 import axios from "axios";
 
 
