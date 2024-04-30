@@ -149,3 +149,33 @@
   background-color: transparent;
   backdrop-filter: blur(10px);
 }
+
+.error-container {
+  position: relative;
+  text-align: center;
+}
+
+.error-content {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+}
+
+.errorImg {
+  height: auto;
+  width: 100%;
+}
+
+@media screen and (max-width: 650px) {
+  .error-content {
+    position: static;
+    transform: none;
+    margin: 20px;
+  }
+}
+

@@ -11,7 +11,7 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  const API = import.meta.env.VITE_API_BCK;
+  const API = import.meta.env.VITE_API;
 
   const getProducts = async ()=>{
     try {

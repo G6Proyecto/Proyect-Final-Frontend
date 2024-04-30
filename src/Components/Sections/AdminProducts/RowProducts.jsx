@@ -2,6 +2,7 @@
 import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 
+
 const RowProducts = ({ product, handleShow, getProducts }) => {
   const API = import.meta.env.VITE_API;
 
@@ -17,7 +18,7 @@ const RowProducts = ({ product, handleShow, getProducts }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await fetch(`${API}/products/delete/`+product._id, {
+          await fetch(`${API}/products/delete/` + product._id, {
             method: "DELETE",
             headers: { "content-Type": "application/json" },
           });
@@ -36,15 +37,18 @@ const RowProducts = ({ product, handleShow, getProducts }) => {
   return (
     <>
       <tr>
-        <td className="text-center align-content-center">{product._id}</td>
-        <td className="text-center align-content-center">{product.title}</td>
-        <td className="text-center align-content-center">{product.category}</td>
-        <td className="text-center align-content-center">{product.price}</td>
-        <td className="text-center align-content-center">{product.description}</td>
-        <td className="text-center align-content-center">{product.dateStock}</td>
-        <td className="text-center align-content-center"><img src={product.url} alt={product.name} width={80} /></td>
-        <td className="d-flex justify-content-center gap-2 p-4">
-          <Button
+        <td>{product._id}</td>
+        <td>{product.title}</td>
+        <td>{product.category}</td>
+        <td>{product.price}</td>
+        <td>{product.description}</td>
+        <td>{product.dateStock}</td>
+        <td>
+          <img src={product.url} alt={product.name} width={80} />
+        </td>
+        <td >
+          <div className="d-flex justify-content-between">
+          <Button className="m-3"
             type="button"
             variant="success"
             onClick={() => {
@@ -53,9 +57,11 @@ const RowProducts = ({ product, handleShow, getProducts }) => {
           >
             Editar
           </Button>
-          <Button type="button" variant="danger" onClick={deleteProduct}>
+          <Button className="m-3"type="button" variant="danger" onClick={deleteProduct}>
             Eliminar
           </Button>
+          </div>
+         
         </td>
       </tr>
     </>

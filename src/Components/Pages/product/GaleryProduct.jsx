@@ -4,7 +4,7 @@ import CardProduct from "./cardProduct";
 import { Col, Container, Row } from "react-bootstrap";
 
 const galeryProduct = () => {
-    const API_URL = import.meta.env.VITE_API_BCK;
+    const API_URL = import.meta.env.VITE_API;
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [products, setProducts] = useState([]);
 
