@@ -9,7 +9,7 @@ const UsersList = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [newRole, setNewRole] = useState('');
 
-  const API = import.meta.env.VITE_API_BCK;
+  const API = import.meta.env.VITE_API;
 
   const getUsers = async ()=>{
     try {

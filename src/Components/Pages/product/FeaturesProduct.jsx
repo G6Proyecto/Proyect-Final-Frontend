@@ -5,7 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import '../product/productStyle.css'
 
 const ProductGallery = () => {
-    const API = import.meta.env.VITE_API_BCK;
+    const API = import.meta.env.VITE_API;
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
