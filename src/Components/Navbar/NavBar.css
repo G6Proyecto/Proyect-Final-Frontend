@@ -10,6 +10,10 @@
   background-color: var(--fourth);
 }
 
+.bg-3rd{
+  background-color: var(--tertiary);
+}
+
 .logo img {
   height: 2em;
   width: 5em;
@@ -55,6 +59,64 @@
   transform: scale(1.1);
 }
 
+.btn-in{
+  font-size: 15px;
+  font-weight: bold;
+  background: var(--secondary);
+  width: 160px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 15px;
+  border: var(--fifth) 2px solid;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+
+.btn-in:hover,
+.btn-in:active{
+  background: var(--tertiary);
+  border: black 2px solid;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.btn-out{
+  font-size: 15px;
+  font-weight: bold;
+  background: var(--primary);
+  width: 160px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 15px;
+  border: var(--fifth) 2px solid;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+
+.btn-out:hover,
+.btn-out:active{
+  background: rgba(211, 11, 11, 0.586);
+  border:  2px solid;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
 @media (min-width: 991px) {
   .dropdown:hover > .dropdown-menu {
     display: block;
@@ -93,14 +155,34 @@
   transform: scale(1.1);
 }
 
-.search-container {
-  top: 20px;
-  background-color: var(--fifth);
-  z-index: 999;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  width: 50px;
-  padding: 5px;
-  border-radius: 5px;
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.search-result-item {
+  margin-bottom: 5px;
+}
+
+.search-result-item a {
+  color: #333;
+  text-decoration: none; 
+  
+}
+
+.search-result-item a:hover{
+  color: var(--primary);
+  
 }
 
 .cust-socials {
@@ -143,11 +225,6 @@
   );
   color: #fff;
   border-radius: 15px;
-}
-
-.modal-bg{
-  background-color: transparent;
-  backdrop-filter: blur(10px);
 }
 
 .error-container {
