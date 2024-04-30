@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Table, Button, Modal, Form } from 'react-bootstrap';
 import Swal from 'sweetalert2';
-
+import "../users.css"
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [show, setShow] = useState(false);
@@ -101,20 +101,20 @@ const UsersList = () => {
             <tr key={user._id}>
               <td>{user.email}</td>
               <td>{user.role}</td>
-              <td>
+              <td className=''>
                 {user.role !== 'Administrador' && (
-                 <Button variant="primary" onClick={() => handleEdit(user)}>Editar</Button>
+                 <button variant=""  className="btn-custom-users mx-5" onClick={() => handleEdit(user)}>Editar</button>
                 )}
-                <Button variant="danger" onClick={() => handleDelete(user._id, user.role)}>Eliminar</Button>
+                <button variant="" className="btn-delete mx-5 " onClick={() => handleDelete(user._id, user.role)}>Eliminar</button>
               </td>
             </tr>
           ))}
         </tbody>
       </Table>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show}  onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Editar Rol</Modal.Title>
+          <Modal.Title>Edite el rol del usuario</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -128,8 +128,8 @@ const UsersList = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>Cerrar</Button>
-          <Button variant="primary" onClick={handleClose}>Guardar Cambios</Button>
+          <button variant="" className="btn-delete mx2" onClick={handleClose}>Cerrar</button>
+          <button variant="" className="btn-custom-users mx-2" onClick={handleClose}>Guardar</button>
         </Modal.Footer>
       </Modal>
     </>

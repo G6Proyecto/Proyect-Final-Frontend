@@ -55,3 +55,7 @@
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+
+.custom-modal {
+  background-color: #000; /* Fondo negro */
+}
