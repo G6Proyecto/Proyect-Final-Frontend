@@ -2,6 +2,9 @@
 import {useNavigate} from "react-router-dom";
 import TableProducts from "../Sections/AdminProducts/TableProducts";
 import { Button } from "react-bootstrap";
+import "../Sections/AdminProducts/Admin.css"
+
+
 
 const Admin = () => {
   const navigate=useNavigate();
@@ -10,29 +13,28 @@ const Admin = () => {
       <div className="text-center align-content-center">
         <h1>Administración</h1>
       </div>
-      <div className="container my-3 py-3">
-        <Button
-          variant="primary"
+
+        <Button 
+          className="m-3 prod"
           onClick={() => {
             navigate("/CreateProducts");
           }}
         >
-         Cargar un Producto
+         CARGAR UN PRODUCTO
         </Button>
        
-      </div>
+  
       <TableProducts></TableProducts>
-      <div className="container d-flex justify-content-center my-3 py-3">
-      <Button
-          variant="primary"
+
+      <Button className="m-3 prod"
           onClick={() => {
             navigate("/ListUsers");
           }}
         >
-         Administrar Usuarios
+         ADMINISTRAR USUARIO
         </Button>
       </div>
-    </div>
+    
   );
 };
 export default Admin;
