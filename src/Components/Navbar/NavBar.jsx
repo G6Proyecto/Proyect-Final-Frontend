@@ -171,7 +171,6 @@ const NavBar = () => {
                 >
                   Ingresá
                 </NavLink>)}
-                
                 {(currentUser!==undefined && <NavLink
                   to="/*"
                   className={"sub-btn text-dark "}
