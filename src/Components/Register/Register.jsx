@@ -3,9 +3,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import clsx from "clsx";
-import {  Modal, Form } from "react-bootstrap";
+import { Modal, Form } from "react-bootstrap";
 import UserContext from "../../Context/UserContext";
-
 
 const Register = ({ isOpenRegis, handleCloseRegis }) => {
   const API = import.meta.env.VITE_API;
@@ -13,13 +12,10 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
   const [isLoadingRegis, setIsLoadingRegis] = useState(false);
 
   const onSubmit = async (values) => {
-    console.log(values);
     setIsLoadingRegis(true);
     try {
       const response = await axios.post(`${API}/users`, values);
-      console.log(response);
       if (response.status === 201) {
-        console.log("Values-->", values);
         SaveAuth(response.data);
         setCurrentUser(response.data);
         formik.resetForm();
@@ -60,12 +56,17 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
     validationSchema: RegisSchema,
     validateOnBlur: true,
     validateOnChange: true,
-    onSubmit:  onSubmit ,
+    onSubmit: onSubmit,
   });
 
   return (
     <>
-      <Modal show={isOpenRegis} onHide={handleCloseRegis}>
+      <Modal
+        show={isOpenRegis}
+        onHide={handleCloseRegis}
+        backdrop="static"
+        keyboard={false}
+      >
         <Modal.Header closeButton className="bg-3rd">
           <Modal.Title>Registrarme</Modal.Title>
         </Modal.Header>
@@ -130,19 +131,22 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
                   "form-control",
                   {
                     "is-invalid":
-                      formik.touched.confirmPassword && formik.errors.confirmPassword,
+                      formik.touched.confirmPassword &&
+                      formik.errors.confirmPassword,
                   },
                   {
                     "is-valid":
-                      formik.touched.confirmPassword && !formik.errors.confirmPassword,
+                      formik.touched.confirmPassword &&
+                      !formik.errors.confirmPassword,
                   }
                 )}
               />
-              {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-                <div className="mt-2 text-danger fw-bolder">
-                  <span role="alert">{formik.errors.confirmPassword}</span>
-                </div>
-              )}
+              {formik.touched.confirmPassword &&
+                formik.errors.confirmPassword && (
+                  <div className="mt-2 text-danger fw-bolder">
+                    <span role="alert">{formik.errors.confirmPassword}</span>
+                  </div>
+                )}
             </Form.Group>
             <div>
               <button

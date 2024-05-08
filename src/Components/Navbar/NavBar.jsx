@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom"; // Importa useNavigate
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "./NavBar.css";
 import Login from "../Login/Login";
@@ -6,16 +6,19 @@ import { useContext, useState } from "react";
 import UserContext from "../../Context/UserContext";
 import Register from "../Register/Register";
 import SearchBar from "../Sections/Search/SearchBar";
+import Swal from "sweetalert2";
 
 const NavBar = () => {
   const { currentUser, setCurrentUser, RemoveAuth } = useContext(UserContext);
+  const navigate = useNavigate(); // Obtiene el objeto de navegación
 
   const [isOpen, setIsOpen] = useState(false);
-
   const [isOpenRegis, setIsOpenRegis] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleShowRegis = () => {
     setIsOpenRegis(true);
+    setIsSidebarOpen(false); // Cerrar sidebar al abrir registro
   };
 
   const handleCloseRegis = () => {
@@ -24,61 +27,93 @@ const NavBar = () => {
 
   const handleShow = () => {
     setIsOpen(true);
+    setIsSidebarOpen(false); // Cerrar sidebar al abrir login
   };
+
   const handleClose = () => {
     setIsOpen(false);
   };
 
-  const LogOut=()=>{
-    RemoveAuth();
-    setCurrentUser(undefined);
-  }
+  const LogOut = () => {
+    Swal.fire({
+      title: "¿Estás seguro de cerrar sesión?",
+      text: "¡Deberás ingresar de nuevo y perderás tu carrito!",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, Cerrar Sesión",
+      cancelButtonText: "Cancelar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let timerInterval;
+        Swal.fire({
+          title: "¡La sesión se está cerrando!",
+          html: "Cerrando sesión en <b></b>.",
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading();
+            const timer = Swal.getPopup().querySelector("b");
+            timerInterval = setInterval(() => {
+              timer.textContent = `${Swal.getTimerLeft()}`;
+            }, 100);
+          },
+          willClose: () => {
+            clearInterval(timerInterval);
+          },
+        });
+        navigate("/"); // Redirige al usuario a la página de inicio después de cerrar sesión
+        RemoveAuth();
+        setCurrentUser(undefined);
+        setIsSidebarOpen(false); // Cerrar sidebar al abrir registro
+      }
+    });
+  };
+
+  const handleSidebarToggle = () => {
+    setIsSidebarOpen(!isSidebarOpen); // Alternar el estado del sidebar
+  };
+
+  const handleNavLinkClick = () => {
+    setIsSidebarOpen(false); // Cerrar sidebar al hacer clic en un enlace del navbar
+  };
 
   return (
     <>
-    <Register isOpenRegis={isOpenRegis} handleCloseRegis={handleCloseRegis} />
+      <Register isOpenRegis={isOpenRegis} handleCloseRegis={handleCloseRegis} />
       <Login isOpen={isOpen} handleClose={handleClose} />
       <nav className="navcolor navbar-dark navbar navbar-expand-lg text-primary ">
         <div className="container-fluid d-flex justify-content-end">
-          {/* <!-- Toggler Btn--> */}
           <button
             className="navbar-toggler shadow-none border-0"
             type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar"
-            aria-label="Toggle navigation"
+            onClick={handleSidebarToggle} // Alternar la visibilidad del sidebar
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          {/* <!-- SideBar --> */}
           <div
-            className=" offcanvas offcanvas-start"
-            tabIndex="0"
-            id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel"
+            className={`offcanvas offcanvas-start ${
+              isSidebarOpen ? "show" : ""
+            }`}
           >
-            {/* <!-- SideBar Header --> */}
             <div className="navcolor offcanvas-header border-botton">
-              <h5
-                className="offcanvas-title text-dark"
-                id="offcanvasNavbarLabel"
-              >
-                Bacode
-              </h5>
+              <h5 className="offcanvas-title text-dark">Bacode</h5>
               <button
                 type="button"
                 className="btn-close btn-close-black shadow-none"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
+                onClick={handleSidebarToggle} // Alternar la visibilidad del sidebar
               ></button>
             </div>
-            {/* <!-- SideBar Body --> */}
             <div className="sidebar offcanvas-body d-flex flex-column align-items-center flex-lg-row p-4 p-lg-0 justify-content-around">
               <div>
                 <ul className="navbar-nav justify-content-center fs-5 flex-grow-1 pe-3">
                   <li className="nav-item mx-2  navItem">
-                    <NavLink to="/" className={"nav-link text-dark"}>
+                    <NavLink
+                      to="/"
+                      className={"nav-link text-dark"}
+                      onClick={handleNavLinkClick}
+                    >
                       Inicio
                     </NavLink>
                   </li>
@@ -97,6 +132,7 @@ const NavBar = () => {
                           <NavLink
                             to="/error"
                             className={"ps-2 nav-link text-dark dropdownItem"}
+                            onClick={handleNavLinkClick} // Cerrar sidebar al hacer clic en una categoría del menú desplegable
                           >
                             {" "}
                             Hamburguesas{" "}
@@ -106,6 +142,7 @@ const NavBar = () => {
                           <NavLink
                             to="/error"
                             className={"ps-2 nav-link text-dark dropdownItem"}
+                            onClick={handleNavLinkClick} // Cerrar sidebar al hacer clic en una categoría del menú desplegable
                           >
                             {" "}
                             Ensaladas{" "}
@@ -115,6 +152,7 @@ const NavBar = () => {
                           <NavLink
                             to="/error"
                             className={"ps-2 nav-link text-dark dropdownItem"}
+                            onClick={handleNavLinkClick} // Cerrar sidebar al hacer clic en una categoría del menú desplegable
                           >
                             {" "}
                             Bebidas{" "}
@@ -125,10 +163,11 @@ const NavBar = () => {
                         </li>
                         <li>
                           <NavLink
-                            to="/error"
+                            to="/galery"
                             className={
                               "menu-btn text-center fw-bolder nav-link text-dark"
                             }
+                            onClick={handleNavLinkClick} // Cerrar sidebar al hacer clic en "Ver todo"
                           >
                             {" "}
                             Ver todo{" "}
@@ -138,14 +177,22 @@ const NavBar = () => {
                     </div>
                   </li>
                   <li className="nav-item mx-2 navItem">
-                    <NavLink to="/contact" className={"nav-link text-dark"}>
+                    <NavLink
+                      to="/contact"
+                      className={"nav-link text-dark"}
+                      onClick={handleNavLinkClick}
+                    >
                       Contacto
                     </NavLink>
                   </li>
                   {currentUser !== undefined &&
                     currentUser.role === "Administrador" && (
                       <li className="nav-item mx-2 navItem">
-                        <NavLink to="/Admin" className={"nav-link text-dark"}>
+                        <NavLink
+                          to="/Admin"
+                          className={"nav-link text-dark"}
+                          onClick={handleNavLinkClick}
+                        >
                           <i className="bi bi-incognito"></i>
                           Administración
                         </NavLink>
@@ -156,34 +203,34 @@ const NavBar = () => {
                   <SearchBar></SearchBar>
                 </div>
               </div>
-              {/* <!--Login / Sign up  --> */}
               <div className="d-flex flex-column flex-lg-row justify-content-start align-items-center gap-3">
                 <NavLink
                   to="/error"
                   className={"text-center fw-bolder nav-link text-dark"}
+                  onClick={handleNavLinkClick}
                 >
                   <i className="bi bi-info-square fs-3 cust-icon"></i>
                 </NavLink>
 
-                {(currentUser===undefined && <NavLink
-                  className={"sub-btn text-dark "}
-                  onClick={handleShow}
-                >
-                  Ingresá
-                </NavLink>)}
-                
-                {(currentUser!==undefined && <NavLink
-                  to="/*"
-                  className={"sub-btn text-dark "}
-                  onClick={LogOut}
-                >
-                  Cerrar Sesión
-                </NavLink>)}
-                
-                {(currentUser===undefined && <NavLink to="/" className={"sub-btn"} onClick={handleShowRegis}>
-                  Creá tu cuenta
-                </NavLink> )}
-                
+                {currentUser === undefined && (
+                  <NavLink
+                    className={"sub-btn text-dark "}
+                    onClick={handleShow}
+                  >
+                    Ingresá
+                  </NavLink>
+                )}
+                {currentUser !== undefined && (
+                  <button className={"sub-btn text-dark "} onClick={LogOut}>
+                    Cerrar Sesión
+                  </button>
+                )}
+
+                {currentUser === undefined && (
+                  <NavLink className={"sub-btn"} onClick={handleShowRegis}>
+                    Creá tu cuenta
+                  </NavLink>
+                )}
               </div>
             </div>
           </div>

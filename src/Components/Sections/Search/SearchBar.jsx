@@ -56,7 +56,6 @@ const SearchBar = () => {
           }}
         />
       </div>
-
       {showResults && searchTerm && (
         <div className='search-results'>
           {filteredProducts.map((product) => (
