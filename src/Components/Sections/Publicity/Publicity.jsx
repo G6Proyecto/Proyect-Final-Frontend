@@ -1,4 +1,6 @@
-import banner1 from '../../CarouselFolder/banner1.webp';
+import pub1 from '../../Images/pub1.jpg';
+import pub2 from '../../Images/pub2.jpg';
+import pub3 from '../../Images/pub3.jpg';
 import { Carousel } from 'react-bootstrap';
 
 const Publicity = () => {
@@ -7,13 +9,13 @@ const Publicity = () => {
         className='my-4 d-sm-none d-md-block'
         >
         <Carousel.Item interval={1000}>
-        <img src={banner1} alt="First slide" className='imgback' />
+        <img src={pub1} alt="First slide" className='imgback' />
         </Carousel.Item>
         <Carousel.Item interval={500}>
-        <img src={banner1} alt="First slide" className='imgback' />
+        <img src={pub2} alt="First slide" className='imgback' />
         </Carousel.Item>
         <Carousel.Item>
-        <img src={banner1} alt="First slide" className='imgback' />
+        <img src={pub3} alt="First slide" className='imgback' />
         </Carousel.Item>
       </Carousel>
     );
