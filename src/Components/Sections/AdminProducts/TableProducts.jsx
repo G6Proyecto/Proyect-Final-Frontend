@@ -11,6 +11,7 @@ const TableProducts = () => {
   const [show, setShow] = useState(false);
   const [productEdit, setProductEdit] = useState(undefined);
 
+  
   const handleShow = (product) => {
     setProductEdit(product);
     setShow(true);
@@ -37,6 +38,8 @@ const TableProducts = () => {
     };
   }, []);
 
+  
+
   return (
     <div>
       <div>
@@ -54,10 +57,11 @@ const TableProducts = () => {
         </div>
        
           
+
+
             <Table responsive className="table-striped table-bordered table-hover table-dark">
               <thead>
                 <tr>
-                  <th className="text-center align-content-center">Id</th>
                   <th className="text-center align-content-center">Título</th>
                   <th className="text-center align-content-center">
                     Categoría

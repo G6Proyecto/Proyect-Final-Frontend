@@ -29,7 +29,7 @@ const CreateProducts = () => {
       .min(4, "Mínimo 4 caracteres")
       .max(500, "Máximo 500 caracteres")
       .required("Se requiere breve información del producto"),
-    dateStock: Yup.date().required(),
+    dateStock: Yup.date(),
     url: Yup.string()
       .url("La URL de la imagen no es válida")
       .required("Se requiere imagen descriptiva del producto")

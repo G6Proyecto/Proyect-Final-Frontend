@@ -37,7 +37,6 @@ const RowProducts = ({ product, handleShow, getProducts }) => {
   return (
     <>
       <tr>
-        <td>{product._id}</td>
         <td>{product.title}</td>
         <td>{product.category}</td>
         <td>{product.price}</td>
@@ -46,22 +45,27 @@ const RowProducts = ({ product, handleShow, getProducts }) => {
         <td>
           <img src={product.url} alt={product.name} width={80} />
         </td>
-        <td >
+        <td>
           <div className="d-flex justify-content-between">
-          <Button className="m-3"
-            type="button"
-            variant="success"
-            onClick={() => {
-              handleShow(product);
-            }}
-          >
-            Editar
-          </Button>
-          <Button className="m-3"type="button" variant="danger" onClick={deleteProduct}>
-            Eliminar
-          </Button>
+            <Button
+              className="m-3"
+              type="button"
+              variant="success"
+              onClick={() => {
+                handleShow(product);
+              }}
+            >
+              Editar
+            </Button>
+            <Button
+              className="m-3"
+              type="button"
+              variant="danger"
+              onClick={deleteProduct}
+            >
+              Eliminar
+            </Button>
           </div>
-         
         </td>
       </tr>
     </>
