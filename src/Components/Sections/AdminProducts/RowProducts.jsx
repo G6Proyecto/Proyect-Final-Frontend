@@ -62,7 +62,7 @@ const RowProducts = ({ product, handleShow, getProducts }) => {
             </>
           ) : (
             <>
-              {product.description.length > 200
+              {product.description.length > 100
                 ? `${product.description.substring(0, 100)}...`
                 : product.description}
               {product.description.length > 100 && (
@@ -79,7 +79,7 @@ const RowProducts = ({ product, handleShow, getProducts }) => {
         </td>
         <td>{product.dateStock}</td>
         <td>
-          <img src={product.url} alt={product.name} width={80} />
+          <img src={product.url} alt={product.name} width={75} />
         </td>
         <td>
           <div className="d-flex justify-content-between align-item-center">
