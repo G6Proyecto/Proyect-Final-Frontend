@@ -9,7 +9,7 @@ const cardProduct = ({product}) => {
         style={{background:'var(--fourth)', minHeight:'120px'}}
         className="cardProduct "
         >
-            <Card.Img variant="top" src={product.url} style={{height: '150px', objectFit:'contain'}} />
+            <Card.Img variant="top" src={product.url} style={{height: '150px', objectFit:'contain', marginTop:'1em'}} />
             <Card.Body className="text-center" style={{ height: 'max-content'}}>
             <Card.Title className="cardTitle"  style={{height: '5rem'}}>{product.title}</Card.Title>
             <Container>

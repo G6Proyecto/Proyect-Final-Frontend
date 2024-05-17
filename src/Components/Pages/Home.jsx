@@ -41,9 +41,11 @@ const Home = () => {
     <div>
       <CarouselFadeExample />
       <article>
-        <Container fluid className="my-4">
+        <Container fluid className="my-2">
+        <article className="titleProducts">Descubri nuestros productos</article>
           <Row>
-            <Col md={9} xs={12} className="mt-2">
+            
+            <Col md={9} xs={12} className="">
               <Row xs={2} md={3} lg={5} className="row-gap-4">
                 {filteredProducts.map((element, index)=>{
                   return(
@@ -52,7 +54,7 @@ const Home = () => {
                 })}
               </Row>
             </Col>
-            <Col md={3} xs={12}>
+            <Col className="mt-1" md={3} xs={12} >
               <FilterProduct onCategorySelect={handleCategorySelect} />
               <Publicity/>
             </Col>
