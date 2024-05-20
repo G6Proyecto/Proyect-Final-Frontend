@@ -45,7 +45,7 @@ const Home = () => {
         <article className="titleProducts">Descubri nuestros productos</article>
           <Row>
             
-            <Col md={9} xs={12} className="">
+            <Col md={9} xs={12} >
               <Row xs={2} md={3} lg={5} className="row-gap-4">
                 {filteredProducts.map((element, index)=>{
                   return(
