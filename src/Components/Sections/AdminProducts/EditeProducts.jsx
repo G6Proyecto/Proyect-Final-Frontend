@@ -18,7 +18,7 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
       formik.setFieldValue("category", product.category, true);
       formik.setFieldValue("price", product.price, true);
       formik.setFieldValue("description", product.description, true);
-      formik.setFieldValue("dateStock", product.dateStock, true);
+      formik.setFieldValue("dateStock", product.dateStock.substring(0, 10), true);
       formik.setFieldValue("url", product.url, true);
     }
   }, [product]);
@@ -224,7 +224,6 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
               <Form.Label>Fecha último control de stock</Form.Label>
               <Form.Control
                 type="date"
-                placeholder="Ingrese la fecha del último control de stock"
                 name="dateStock"
                 value={formik.values.dateStock}
                 onChange={formik.handleChange}

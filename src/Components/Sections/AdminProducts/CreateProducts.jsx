@@ -7,7 +7,6 @@ import { useFormik } from "formik";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
-
 const CreateProducts = () => {
 
   const API = import.meta.env.VITE_API;
@@ -29,7 +28,8 @@ const CreateProducts = () => {
       .min(4, "Mínimo 4 caracteres")
       .max(500, "Máximo 500 caracteres")
       .required("Se requiere breve información del producto"),
-    dateStock: Yup.date().required(),
+    dateStock: Yup.date()
+      .required('Fecha último control de stock es requerida'),
     url: Yup.string()
       .url("La URL de la imagen no es válida")
       .required("Se requiere imagen descriptiva del producto")
@@ -98,12 +98,12 @@ const CreateProducts = () => {
       >
         ATRÁS
       </Button>
-      <h3 className="p-3">Cargar nuevo producto</h3>
-      <div className="row">
+      <h3 className="text-center">Cargar nuevo producto</h3>
+      <div className="row px-2">
         <div className="col-lg-6 col-12 mx-auto my-4 rounded border border-3 p-2 shadow">
           <Form onSubmit={formik.handleSubmit}>
-            <Form.Group controlId="title">
-              <Form.Label className="text-start p-1">Título</Form.Label>
+            <Form.Group controlId="title" className="px-2">
+              <Form.Label className="mb-0">Título</Form.Label>
               <Form.Control
                 type="text"
                 maxLength={30}
@@ -128,8 +128,8 @@ const CreateProducts = () => {
               )}
             </Form.Group>
 
-            <Form.Group controlId="category">
-              <Form.Label>Categoría</Form.Label>
+            <Form.Group controlId="category" className="px-2">
+              <Form.Label className="mb-0 mt-2">Categoría</Form.Label>
               <Form.Select
                 aria-label="category"
                 name="category"
@@ -159,8 +159,8 @@ const CreateProducts = () => {
               )}
             </Form.Group>
 
-            <Form.Group className="p-1" controlId="price">
-              <Form.Label>Precio</Form.Label>
+            <Form.Group controlId="price" className="px-2">
+              <Form.Label className="mb-0 mt-2">Precio</Form.Label>
               <Form.Control
                 type="number"
                 placeholder="Ingrese el precio del producto"
@@ -183,8 +183,8 @@ const CreateProducts = () => {
               )}
             </Form.Group>
 
-            <Form.Group className="p-1" controlId="description">
-              <Form.Label>Descripción</Form.Label>
+            <Form.Group className="p-2" controlId="description">
+              <Form.Label className="mb-0 mt-2">Descripción</Form.Label>
               <Form.Control
                 as="textarea"
                 placeholder="Ingrese la información general del producto"
@@ -212,8 +212,8 @@ const CreateProducts = () => {
               )}
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="dateStock">
-              <Form.Label>Fecha último control de stock</Form.Label>
+            <Form.Group className="px-2" controlId="dateStock">
+              <Form.Label className="mb-0 mt-2">Fecha último control de stock</Form.Label>
               <Form.Control
                 type="date"
                 name="dateStock"
@@ -222,8 +222,8 @@ const CreateProducts = () => {
               />
             </Form.Group>
 
-            <Form.Group className="p-1" controlId="url">
-              <Form.Label>URL de la imagen del producto</Form.Label>
+            <Form.Group className="px-2" controlId="url">
+              <Form.Label className="mb-0 mt-2">URL de la imagen del producto</Form.Label>
               <Form.Control
                 type="text"
                 name="url"
@@ -248,18 +248,11 @@ const CreateProducts = () => {
               )}
             </Form.Group>
 
-            <Button className="m-3 prod" type="submit">
+            <Button className="m-2" type="submit"
+            variant="success">
               GUARDAR
             </Button>
           </Form>
-        </div>
-
-        <div className="col-lg-6 col-12 d-flex align-items-start justify-content-center mx-auto my-4">
-          <img
-            className="img-fluid w-100 h-75 rounded border border-3"
-            src={productoImage}
-            alt="Foto del producto"
-          />
         </div>
       </div>
     </div>
