@@ -5,7 +5,16 @@
   --fourth: #ec9924;
   --fifth: #e5e9f3;
 }
-
+.titleProducts{
+  background-color: var(--fourth);
+  font-size: calc(2em + 1vw);
+  line-height: .8em;
+  font-weight: 700;
+  margin: .2em 0;
+  padding: .5em 0;
+  text-align: center;
+  color: #1f1f1f;
+}
 .app{
     max-width: 1200px;
     width: 100%;
@@ -125,10 +134,7 @@
 .cardProduct{
     min-width: 100px;
 }
-.cardTitle{
 
-
-}
 .imgCard{
     width: 100%;
    
@@ -137,11 +143,28 @@
 }
 
 .btnCategory{
-  background: #ff0000;
+  background-color:var(--fourth);
+  border:0;
+  font-size:1.5rem;
+  border-bottom-left-radius: 30px;
+  color:'#111';
+  font-weight:700;
+  padding: .4rem 0;
 }
-.btnCategories{
+.selectCategory{
+  background-color:var(--fourth);
+  border:0;
+  font-size:1.1rem;
+  font-weight:700;
+  color:#111;
+  padding: .4em;
+  border-radius: .3em;
+}
+.selectCategory.selected {
+  background-color: var(--tertiary); 
+  color: #ffffff;
+}
 
-}
 .prodFeatured{
   font-size: 2.5rem;
   color: var(--tertiary);

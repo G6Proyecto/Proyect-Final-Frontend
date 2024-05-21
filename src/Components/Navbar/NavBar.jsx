@@ -37,7 +37,7 @@ const NavBar = () => {
   const LogOut = () => {
     Swal.fire({
       title: "¿Estás seguro de cerrar sesión?",
-      text: "¡Deberás ingresar de nuevo y perderás tu carrito!",
+      text: "¡Deberás ingresar de nuevo!",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",

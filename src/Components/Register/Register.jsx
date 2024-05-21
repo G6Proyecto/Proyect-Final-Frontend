@@ -32,12 +32,12 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
   const RegisSchema = Yup.object().shape({
     email: Yup.string()
       .email("Formato invalido")
-      .min(7)
-      .max(128)
+      .min(7, "Minimo 7 caracteres")
+      .max(128, "Maximo 128 caracteres")
       .required("El email es requerido"),
     password: Yup.string()
-      .min(7)
-      .max(128)
+      .min(6, "Minimo 6 caracteres")
+      .max(30, "Maximo 30 caracteres")
       .required("La contraseña es requerida"),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password"), null], "Las contraseñas deben coincidir")
@@ -78,6 +78,7 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
                 type="email"
                 placeholder="Ingrese su email"
                 name="email"
+                maxLength={129}
                 {...formik.getFieldProps("email")}
                 className={clsx(
                   "form-control",
@@ -100,6 +101,7 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
               <Form.Control
                 type="password"
                 placeholder="Ingrese su contraseña"
+                maxLength={31}
                 name="password"
                 {...formik.getFieldProps("password")}
                 className={clsx(
@@ -125,6 +127,7 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
               <Form.Control
                 type="password"
                 placeholder="Repita su contraseña"
+                maxLength={31}
                 name="confirmPassword"
                 {...formik.getFieldProps("confirmPassword")}
                 className={clsx(
