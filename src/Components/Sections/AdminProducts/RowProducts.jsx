@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
-
 import { useState } from "react";
+import { format } from 'date-fns';
 
 const RowProducts = ({ product, handleShow, getProducts }) => {
   const API = import.meta.env.VITE_API;
@@ -42,6 +42,10 @@ const RowProducts = ({ product, handleShow, getProducts }) => {
     setShowFullDescription(!showFullDescription);
   };
 
+  const formatDate = (dateString) => {
+    return format(new Date(dateString), 'yyyy-MM-dd');
+  };
+
   return (
     <>
       <tr>
@@ -77,7 +81,7 @@ const RowProducts = ({ product, handleShow, getProducts }) => {
             </>
           )}
         </td>
-        <td>{product.dateStock}</td>
+        <td>{formatDate(product.dateStock)}</td>
         <td>
           <img src={product.url} alt={product.name} width={75} />
         </td>

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { format, startOfToday } from 'date-fns';
 
 const ModalEditar = ({ show, handleClose, product, getProducts }) => {
   const API = import.meta.env.VITE_API;
@@ -23,6 +24,12 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
     }
   }, [product]);
 
+  const getCurrentDate = () => {
+    return format(startOfToday(), 'yyyy-MM-dd');
+  };
+
+  const currentDate = getCurrentDate();
+
   const ProductSchema = Yup.object().shape({
     title: Yup.string()
       .min(3, "Mínimo 3 caracteres")
@@ -37,23 +44,20 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
       .min(4, "Mínimo 5 caracteres")
       .max(500, "Máximo 200 caracteres")
       .required("Se requiere breve información del producto"),
-    dateStock: Yup.date(),
+    dateStock: Yup.date()
+      .min(currentDate, `La fecha no puede ser anterior a ${currentDate}`)
+      .required("Fecha último control de stock es requerida"),
     url: Yup.string()
       .required("Se requiere imagen descriptiva del producto")
       .url("La URL de la imagen no es válida")
   });
-
-  const getCurrentDate = () => {
-    const currentDate = new Date().toISOString().split("T")[0];
-    return currentDate;
-  };
 
   const initialValues = {
     title: "",
     category: "",
     price: "",
     description: "",
-    dateStock: getCurrentDate(),
+    dateStock: currentDate,
     url: "",
   };
 
@@ -136,7 +140,7 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
               )}
             </Form.Group>
 
-             <Form.Group controlId="category">
+            <Form.Group controlId="category">
               <Form.Label>Categoría</Form.Label>
               <Form.Select
                 aria-label="category"
@@ -225,9 +229,22 @@ const ModalEditar = ({ show, handleClose, product, getProducts }) => {
               <Form.Control
                 type="date"
                 name="dateStock"
-                value={formik.values.dateStock}
-                onChange={formik.handleChange}
+                {...formik.getFieldProps("dateStock")}
+                className={clsx(
+                  "form-control",
+                  {
+                    "is-invalid": formik.touched.dateStock && formik.errors.dateStock,
+                  },
+                  {
+                    "is-valid": formik.touched.dateStock && !formik.errors.dateStock,
+                  }
+                )}
               />
+              {formik.touched.dateStock && formik.errors.dateStock && (
+                <div className="mt-2 text-danger fw-bolder">
+                  <span role="alert">{formik.errors.dateStock}</span>
+                </div>
+              )}
             </Form.Group>
 
             <Form.Group className="p-1" controlId="url">

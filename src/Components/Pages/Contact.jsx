@@ -10,11 +10,12 @@ const Contact = () => {
     name: Yup.string()
       .min(6, "Minimo 6 caracteres")
       .max(30, "Maximo 30 caracteres")
+      .matches(/^[a-zA-Z0-9]+$/, 'Formato invalido, ingrese unicamente letras.')
       .required("El nombre es requerido"),
     email: Yup.string()
       .email("Formato de correo inválido")
       .min(7, "Minimo 7 caracteres")
-      .max(30, "Maximo 30 caracteres")
+      .max(128, "Maximo 128 caracteres")
       .required("El correo es requerido"),
     message: Yup.string()
       .min(4, "Minimo 4 caracteres")
@@ -66,6 +67,7 @@ const Contact = () => {
                 <Form.Control
                   type="text"
                   placeholder="Ingrese su nombre y apellido"
+                  maxLength={31}
                   className={clsx("form-control", {
                     "is-invalid": formik.touched.name && formik.errors.name,
                     "is-valid": formik.touched.name && !formik.errors.name,
@@ -81,6 +83,7 @@ const Contact = () => {
                 <Form.Control
                   type="email"
                   placeholder="nombre@ejemplo.com"
+                  maxLength={129}
                   className={clsx("form-control", {
                     "is-invalid": formik.touched.email && formik.errors.email,
                     "is-valid": formik.touched.email && !formik.errors.email,
@@ -96,6 +99,7 @@ const Contact = () => {
                 <Form.Control
                   as="textarea"
                   rows={3}
+                  maxLength={251}
                   className={clsx("form-control", {
                     "is-invalid":
                       formik.touched.message && formik.errors.message,
