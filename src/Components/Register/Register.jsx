@@ -36,8 +36,9 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
       .max(128, "Maximo 128 caracteres")
       .required("El email es requerido"),
     password: Yup.string()
-      .min(6, "Minimo 6 caracteres")
-      .max(30, "Maximo 30 caracteres")
+      .min(8, "Minimo 8 caracteres")
+      .max(16, "Maximo 16 caracteres")
+      .matches(/^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/, 'La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.')
       .required("La contraseña es requerida"),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password"), null], "Las contraseñas deben coincidir")
@@ -101,7 +102,7 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
               <Form.Control
                 type="password"
                 placeholder="Ingrese su contraseña"
-                maxLength={31}
+                maxLength={17}
                 name="password"
                 {...formik.getFieldProps("password")}
                 className={clsx(
@@ -127,7 +128,7 @@ const Register = ({ isOpenRegis, handleCloseRegis }) => {
               <Form.Control
                 type="password"
                 placeholder="Repita su contraseña"
-                maxLength={31}
+                maxLength={17}
                 name="confirmPassword"
                 {...formik.getFieldProps("confirmPassword")}
                 className={clsx(
