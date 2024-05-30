@@ -130,7 +130,7 @@ const NavBar = () => {
                       <ul className="dropdown-menu">
                         <li>
                           <NavLink
-                            to="/error"
+                             to={`/galery#Hamburguesas`}
                             className={"ps-2 nav-link text-dark dropdownItem"}
                             onClick={handleNavLinkClick} // Cerrar sidebar al hacer clic en una categoría del menú desplegable
                           >
@@ -140,7 +140,7 @@ const NavBar = () => {
                         </li>
                         <li>
                           <NavLink
-                            to="/error"
+                             to={`/galery#Ensaladas`}
                             className={"ps-2 nav-link text-dark dropdownItem"}
                             onClick={handleNavLinkClick} // Cerrar sidebar al hacer clic en una categoría del menú desplegable
                           >
@@ -150,12 +150,22 @@ const NavBar = () => {
                         </li>
                         <li>
                           <NavLink
-                            to="/error"
+                             to={`/galery#Bebidas`}
                             className={"ps-2 nav-link text-dark dropdownItem"}
                             onClick={handleNavLinkClick} // Cerrar sidebar al hacer clic en una categoría del menú desplegable
                           >
                             {" "}
                             Bebidas{" "}
+                          </NavLink>
+                        </li>
+                        <li>
+                          <NavLink
+                             to={`/galery#Postres`}
+                            className={"ps-2 nav-link text-dark dropdownItem"}
+                            onClick={handleNavLinkClick} // Cerrar sidebar al hacer clic en una categoría del menú desplegable
+                          >
+                            {" "}
+                            Postres{" "}
                           </NavLink>
                         </li>
                         <li>
