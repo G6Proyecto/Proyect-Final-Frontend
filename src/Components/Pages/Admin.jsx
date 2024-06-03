@@ -1,7 +1,6 @@
 
 import {useNavigate} from "react-router-dom";
 import TableProducts from "../Sections/AdminProducts/TableProducts";
-import { Button } from "react-bootstrap";
 import "../Sections/AdminProducts/Admin.css"
 
 
@@ -14,25 +13,25 @@ const Admin = () => {
         <h1>Administración</h1>
       </div>
 
-        <Button 
-          className="m-3 prod"
+        <button 
+          className="ms-5 prod"
           onClick={() => {
             navigate("/CreateProducts");
           }}
         >
          CARGAR UN PRODUCTO
-        </Button>
+        </button>
        
   
       <TableProducts></TableProducts>
 
-      <Button className="m-3 prod"
+      <button className="ms-5 m-3 prod"
           onClick={() => {
             navigate("/ListUsers");
           }}
         >
          ADMINISTRAR USUARIO
-        </Button>
+        </button>
       </div>
     
   );

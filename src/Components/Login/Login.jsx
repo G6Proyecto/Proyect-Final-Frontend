@@ -16,12 +16,13 @@ const Login = ({ isOpen, handleClose }) => {
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
       .email("Formato invalido")
-      .min(7)
-      .max(128)
+      .min(7, "Minimo 7 caracteres")
+      .max(128, "Maximo 128 caracteres")
       .required("El email es requerido"),
     password: Yup.string()
-      .min(6)
-      .max(30)
+      .min(8, "MInimo 8 caracteres")
+      .max(16, "Maximo 16 caracteres")
+      .matches(/^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/, 'La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.')
       .required("La contraseña es requerido"),
   });
 
@@ -84,6 +85,7 @@ const Login = ({ isOpen, handleClose }) => {
               <Form.Control
                 type="email"
                 placeholder="Ingresá tu email"
+                maxLength={129}
                 name="email"
                 {...formik.getFieldProps("email")}
                 className={clsx(
@@ -108,6 +110,7 @@ const Login = ({ isOpen, handleClose }) => {
               <Form.Control
                 type="password"
                 placeholder="Ingresá tu contraseña"
+                maxLength={17}
                 name="password"
                 {...formik.getFieldProps("password")}
                 className={clsx(

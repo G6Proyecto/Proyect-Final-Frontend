@@ -1,17 +1,22 @@
 import axios from "axios";
 import "../productStyle.css"
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-
+import { useNavigate, useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import UserContext from "../../../../Context/UserContext";
 
 const aboutProduct = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { GetAuth } = useContext(UserContext);
+  const navigate = useNavigate();
+
+
+  
   const [product, setProduct] = useState([]);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+
   const {id} = useParams();
 
   const API = import.meta.env.VITE_API;
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+
 
   const getProduct = async()=>{
     try {
@@ -21,15 +26,24 @@ const aboutProduct = () => {
         console.log("Error--->", error);
     }
 }
-// eslint-disable-next-line react-hooks/rules-of-hooks
+
 useEffect(()=>{
 
   getProduct()
 },[id])
-/*
-// eslint-disable-next-line react-hooks/rules-of-hooks
-const navigate = useNavigate()
-  */
+const handleAddToCart = () => {
+  const session = GetAuth();
+  if (!session) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Para poder realizar una compra se necesita iniciar sesion',
+    });
+  } else {
+    navigate('/error');
+  }
+};
+
 
   return (
     <div className="app">
@@ -48,7 +62,7 @@ const navigate = useNavigate()
             <p>{product.description}</p>
         
            
-            <button className="cart">Add to cart</button>
+            <button className="cart" onClick={handleAddToCart}>Agregar al carrito</button>
 
           </div>
         </div>

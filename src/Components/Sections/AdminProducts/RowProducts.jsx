@@ -1,10 +1,13 @@
 /* eslint-disable react/prop-types */
 import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
-
+import { useState } from "react";
+import { format } from 'date-fns';
 
 const RowProducts = ({ product, handleShow, getProducts }) => {
   const API = import.meta.env.VITE_API;
+
+  const [showFullDescription, setShowFullDescription] = useState(false);
 
   const deleteProduct = () => {
     Swal.fire({
@@ -34,34 +37,75 @@ const RowProducts = ({ product, handleShow, getProducts }) => {
       }
     });
   };
+
+  const toggleShowFullDescription = () => {
+    setShowFullDescription(!showFullDescription);
+  };
+
+  const formatDate = (dateString) => {
+    return format(new Date(dateString), 'yyyy-MM-dd');
+  };
+
   return (
     <>
       <tr>
-        <td>{product._id}</td>
         <td>{product.title}</td>
         <td>{product.category}</td>
         <td>{product.price}</td>
-        <td>{product.description}</td>
-        <td>{product.dateStock}</td>
         <td>
-          <img src={product.url} alt={product.name} width={80} />
+          {showFullDescription ? (
+            <>
+              {product.description}
+              <Button
+                variant="link"
+                onClick={toggleShowFullDescription}
+                className="ms-2"
+              >
+                Mostrar menos
+              </Button>
+            </>
+          ) : (
+            <>
+              {product.description.length > 100
+                ? `${product.description.substring(0, 100)}...`
+                : product.description}
+              {product.description.length > 100 && (
+                <Button
+                  variant="link"
+                  onClick={toggleShowFullDescription}
+                  className="ms-2"
+                >
+                  Mostrar más
+                </Button>
+              )}
+            </>
+          )}
         </td>
-        <td >
-          <div className="d-flex justify-content-between">
-          <Button className="m-3"
-            type="button"
-            variant="success"
-            onClick={() => {
-              handleShow(product);
-            }}
-          >
-            Editar
-          </Button>
-          <Button className="m-3"type="button" variant="danger" onClick={deleteProduct}>
-            Eliminar
-          </Button>
+        <td>{formatDate(product.dateStock)}</td>
+        <td>
+          <img src={product.url} alt={product.name} width={75} />
+        </td>
+        <td>
+          <div className="d-flex justify-content-between align-item-center">
+            <Button
+              className="m-3"
+              type="button"
+              variant="success"
+              onClick={() => {
+                handleShow(product);
+              }}
+            >
+              Editar   
+            </Button>
+            <Button
+              className="m-3"
+              type="button"
+              variant="danger"
+              onClick={deleteProduct}
+            >
+              Eliminar
+            </Button>
           </div>
-         
         </td>
       </tr>
     </>

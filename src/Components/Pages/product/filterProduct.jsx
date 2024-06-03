@@ -2,7 +2,6 @@ import { useState } from 'react';
 import "../product/productStyle.css"
 import {Collapse } from 'react-bootstrap';
 
-// eslint-disable-next-line react/prop-types
 const FilterProduct = ({ onCategorySelect }) => {
   const [open, setOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);

@@ -44,14 +44,11 @@ function App() {
     };
   },[]);
 
-  //se va a encargar de manejar pura y exclusivamente la instancia de axios escuchando constantemente currentUser
    useEffect(()=>{
 
      if (currentUser!==undefined) {
-       //configuramos axios
        axios.defaults.headers.common["Authorization"]=`Bearer ${currentUser.token}`;
      }else{
-       //quitamos la configuración del header de axios
        delete axios.defaults.headers.common["Authorization"];
      }
 

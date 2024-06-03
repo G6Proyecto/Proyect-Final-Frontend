@@ -37,7 +37,7 @@ const NavBar = () => {
   const LogOut = () => {
     Swal.fire({
       title: "¿Estás seguro de cerrar sesión?",
-      text: "¡Deberás ingresar de nuevo y perderás tu carrito!",
+      text: "¡Deberás ingresar de nuevo!",
       icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -63,20 +63,20 @@ const NavBar = () => {
             clearInterval(timerInterval);
           },
         });
-        navigate("/"); // Redirige al usuario a la página de inicio después de cerrar sesión
+        navigate("/"); 
         RemoveAuth();
         setCurrentUser(undefined);
-        setIsSidebarOpen(false); // Cerrar sidebar al abrir registro
+        setIsSidebarOpen(false); 
       }
     });
   };
 
   const handleSidebarToggle = () => {
-    setIsSidebarOpen(!isSidebarOpen); // Alternar el estado del sidebar
+    setIsSidebarOpen(!isSidebarOpen); 
   };
 
   const handleNavLinkClick = () => {
-    setIsSidebarOpen(false); // Cerrar sidebar al hacer clic en un enlace del navbar
+    setIsSidebarOpen(false); 
   };
 
   return (
@@ -88,7 +88,7 @@ const NavBar = () => {
           <button
             className="navbar-toggler shadow-none border-0"
             type="button"
-            onClick={handleSidebarToggle} // Alternar la visibilidad del sidebar
+            onClick={handleSidebarToggle} 
           >
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -102,7 +102,7 @@ const NavBar = () => {
               <button
                 type="button"
                 className="btn-close btn-close-black shadow-none"
-                onClick={handleSidebarToggle} // Alternar la visibilidad del sidebar
+                onClick={handleSidebarToggle}
               ></button>
             </div>
             <div className="sidebar offcanvas-body d-flex flex-column align-items-center flex-lg-row p-4 p-lg-0 justify-content-around">
@@ -132,7 +132,7 @@ const NavBar = () => {
                           <NavLink
                              to={`/galery#Hamburguesas`}
                             className={"ps-2 nav-link text-dark dropdownItem"}
-                            onClick={handleNavLinkClick} // Cerrar sidebar al hacer clic en una categoría del menú desplegable
+                            onClick={handleNavLinkClick} 
                           >
                             {" "}
                             Hamburguesas{" "}
@@ -142,7 +142,7 @@ const NavBar = () => {
                           <NavLink
                              to={`/galery#Ensaladas`}
                             className={"ps-2 nav-link text-dark dropdownItem"}
-                            onClick={handleNavLinkClick} // Cerrar sidebar al hacer clic en una categoría del menú desplegable
+                            onClick={handleNavLinkClick}
                           >
                             {" "}
                             Ensaladas{" "}
@@ -152,7 +152,7 @@ const NavBar = () => {
                           <NavLink
                              to={`/galery#Bebidas`}
                             className={"ps-2 nav-link text-dark dropdownItem"}
-                            onClick={handleNavLinkClick} // Cerrar sidebar al hacer clic en una categoría del menú desplegable
+                            onClick={handleNavLinkClick}
                           >
                             {" "}
                             Bebidas{" "}
@@ -177,7 +177,7 @@ const NavBar = () => {
                             className={
                               "menu-btn text-center fw-bolder nav-link text-dark"
                             }
-                            onClick={handleNavLinkClick} // Cerrar sidebar al hacer clic en "Ver todo"
+                            onClick={handleNavLinkClick}
                           >
                             {" "}
                             Ver todo{" "}
