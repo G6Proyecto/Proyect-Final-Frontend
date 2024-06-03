@@ -5,10 +5,10 @@ import { Col, Container, Row } from "react-bootstrap";
 
 const galeryProduct = () => {
     const API_URL = import.meta.env.VITE_API;
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+  
     const [products, setProducts] = useState([]);
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+  
     useEffect(() => {
         const fetchProducts = async () => {
             try {
