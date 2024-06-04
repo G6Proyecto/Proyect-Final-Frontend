@@ -5,10 +5,10 @@ import { Col, Container, Row } from "react-bootstrap";
 
 const galeryProduct = () => {
     const API_URL = import.meta.env.VITE_API;
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+  
     const [products, setProducts] = useState([]);
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+  
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -33,7 +33,7 @@ const galeryProduct = () => {
     return (
         <Container className="w-100 my-2">
             {Object.entries(productsByCategory).map(([category, products]) => (
-                <div key={category}>
+                <div key={category} >
                     <h2 className='text-center mt-4 py-3 title-category'>{category}</h2>
                     <Col >
                         <Row xs={2} md={3} lg={5} className="row-gap-4">
